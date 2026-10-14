@@ -1,0 +1,1193 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Selbys Blinds</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,350;0,6..72,500;1,6..72,300&display=swap" rel="stylesheet">
+<style>
+/* Selbys Blinds, premium redesign.
+   Layout: a quiet editorial page of light and shade. One bold moment: the hero photo opens like a venetian blind. Everything else stays calm, left aligned and generously spaced.
+   Palette tokens below are a swappable set (Harbour is the default): ink for the deep bands, ground for the page, paper for panels, one metallic accent.
+   Type: Newsreader (light, large, serif) for display, Hanken Grotesk for body. */
+:root{
+  --ink:#0F2B34; --ink-2:#194553; --ground:#E8EEEF; --paper:#F7FAFA; --accent:#C79B4B; --on-accent:#0F2B34;
+  --on-ink:#F1F5F5; --on-ink-2:#A9BDC2; --err:#A8231B;
+  --text:var(--ink); --muted:color-mix(in srgb,var(--ink) 68%,var(--ground)); --line:color-mix(in srgb,var(--ink) 16%,transparent);
+  --tint:color-mix(in srgb,var(--ink) 6%,var(--ground)); --focus:var(--ink);
+  --display:'Newsreader','Iowan Old Style','Palatino Linotype',Georgia,serif; --body:'Hanken Grotesk','Segoe UI',system-ui,Arial,sans-serif;
+  --gut:clamp(18px,4.2vw,40px); --max:1240px; color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--ground);color:var(--text);font:400 1.0625rem/1.62 var(--body);-webkit-font-smoothing:antialiased}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+a{color:inherit}
+img{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:2px}
+.on-ink :focus-visible,.ink :focus-visible{outline-color:var(--accent)}
+h1,h2,h3,h4{font-family:var(--display);font-weight:350;margin:0;text-wrap:balance;letter-spacing:-.018em;line-height:1.06;font-variation-settings:"opsz" 72}
+h1{font-size:clamp(2.5rem,6.4vw,5.6rem);font-weight:300;letter-spacing:-.03em;line-height:1}
+h2{font-size:clamp(2rem,4.4vw,3.5rem)}
+h3{font-size:clamp(1.3rem,2vw,1.6rem);line-height:1.2}
+p{margin:0}
+.lead{font-size:1.2rem;color:var(--muted);max-width:56ch}
+.wrap{max-width:calc(var(--max) + 2*var(--gut));margin-inline:auto;padding-inline:var(--gut)}
+.sec{padding-block:clamp(56px,9vw,120px)}
+.head{display:grid;gap:14px;margin-bottom:clamp(28px,5vw,56px);max-width:62ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:10px 24px;font:600 .98rem var(--body);border:1.5px solid transparent;border-radius:2px;text-decoration:none;background:none;color:inherit}
+.btn-primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.btn-primary:hover{background:color-mix(in srgb,var(--accent) 86%,#fff)}
+.btn-line{border-color:currentColor}
+.btn-line:hover{background:color-mix(in srgb,currentColor 10%,transparent)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.ink{background:var(--ink);color:var(--on-ink)}
+.ink .lead,.ink p{color:var(--on-ink-2)}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:clamp(14px,3vw,34px);padding-block:8px}
+.brand img{width:52px;height:52px;mix-blend-mode:multiply}
+.nav{display:none;margin-left:auto;gap:clamp(14px,2vw,28px)}
+.nav a{text-decoration:none;font-weight:500;font-size:.96rem;padding:8px 0;border-bottom:2px solid transparent}
+.nav a:hover{border-color:var(--accent)}
+.hdr-right{display:flex;align-items:center;gap:16px;margin-left:auto}
+.hdr-tel{display:none;font-weight:600;text-decoration:none;font-variant-numeric:tabular-nums}
+.menu-btn{min-height:44px;padding:8px 16px;background:none;border:1.5px solid var(--ink);color:var(--ink);font:600 .95rem var(--body);border-radius:2px}
+.nav.open{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);padding:10px var(--gut) 16px;margin:0}
+@media (min-width:1040px){
+  .nav{display:flex}.nav.open{position:static;flex-direction:row;padding:0;border:0;background:none}
+  .hdr-right{margin-left:0}.hdr-tel{display:inline}.menu-btn{display:none}
+}
+
+/* hero */
+.hero{padding-top:clamp(34px,6vw,84px);padding-bottom:clamp(40px,6vw,80px)}
+.hero-top{display:grid;gap:clamp(22px,3.5vw,40px);align-items:end}
+@media (min-width:980px){.hero-top{grid-template-columns:minmax(0,1.55fr) minmax(0,.85fr);gap:clamp(40px,6vw,96px)}}
+.hero h1{max-width:19ch;font-size:clamp(2.4rem,5vw,4.4rem)}
+.hero-photo{position:relative;margin:clamp(28px,4.5vw,52px) 0 0;overflow:hidden;background:var(--ink);aspect-ratio:4/3}
+@media (min-width:760px){.hero-photo{aspect-ratio:21/9}}
+.hero-photo>img{width:100%;height:100%;object-fit:cover}
+.slats{position:absolute;inset:0;display:flex;flex-direction:column;pointer-events:none}
+.slats i{flex:1;background:linear-gradient(var(--ink-2),var(--ink));border-bottom:1px solid color-mix(in srgb,var(--accent) 40%,transparent);transform:scaleY(0);animation:slat 1.15s cubic-bezier(.6,0,.2,1) backwards;animation-delay:calc(var(--n)*55ms + .15s)}
+@keyframes slat{from{transform:scaleY(1)}to{transform:scaleY(0)}}
+.hero-note{display:grid;gap:22px;padding-bottom:6px}
+.hero-note p{color:var(--muted);font-size:1.06rem}
+.facts{display:grid;gap:0;margin:clamp(26px,4vw,44px) 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+@media (min-width:760px){.facts{grid-template-columns:repeat(3,1fr)}.facts li+li{border-left:1px solid var(--line);padding-left:clamp(18px,3vw,36px)}}
+.facts li{padding-block:18px;font:350 clamp(1.25rem,2vw,1.6rem)/1.25 var(--display)}
+.facts span{display:block;font:400 .92rem/1.4 var(--body);color:var(--muted);margin-bottom:2px}
+@media (max-width:759px){.facts li+li{border-top:1px solid var(--line)}}
+
+/* marquee */
+.marquee{overflow:hidden;padding-block:22px;border-block:1px solid var(--line);background:var(--paper)}
+.mq-track{display:flex;width:max-content;animation:mq 70s linear infinite}
+.marquee:hover .mq-track{animation-play-state:paused}
+.mq-group{display:flex;align-items:center;gap:34px;padding-right:34px;margin:0;list-style:none;flex:none}
+.mq-group li{display:flex;align-items:center;gap:16px;font:italic 300 clamp(1.4rem,2.6vw,2rem)/1 var(--display);white-space:nowrap}
+.mq-group li img{width:192px;height:128px;object-fit:cover;border-radius:4px;flex:none;box-shadow:0 2px 10px rgba(15,43,52,.18)}
+.mq2 .mq-group li img{width:168px;height:112px}
+.marquee{padding-block:20px}
+@media (max-width:600px){.mq-group li img{width:144px;height:96px}.mq2 .mq-group li img{width:132px;height:88px}}
+.mq-group li::after{content:"";margin-left:18px;width:7px;height:7px;background:var(--accent);transform:rotate(45deg);flex:none}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){
+  .mq-track{width:auto;flex-wrap:wrap;justify-content:center;padding-inline:var(--gut)}
+  .mq-group{flex-wrap:wrap;justify-content:center;gap:12px 28px;padding-right:0}
+  .mq-group li{gap:14px}
+  .mq-group[aria-hidden="true"]{display:none}
+}
+
+/* the house: a real Selbys home fills the backdrop */
+.house{background:var(--ink);color:var(--on-ink)}
+.stage{position:relative;display:flex;flex-direction:column}
+.photo{order:2;position:relative;aspect-ratio:var(--ar,15/7);overflow:hidden;background:var(--ink)}
+.photo>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.shade{display:none}
+.headblock{order:1;padding-block:clamp(44px,7vw,84px) 20px}
+.headblock .lead{color:var(--on-ink-2);margin-top:14px}
+.panelwrap{order:3;padding-block:20px clamp(44px,7vw,84px)}
+.scenes{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.scene-b{background:color-mix(in srgb,var(--paper) 92%,transparent);color:var(--ink);border:1.5px solid transparent;border-radius:2px;padding:7px 16px;font:500 .95rem var(--body);min-height:44px}
+.scene-b:hover{border-color:var(--accent)}
+.scene-b.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+.hot{position:absolute;z-index:2;transform:translate(-50%,-50%);width:40px;height:40px;border:0;border-radius:50%;background:transparent;padding:0}
+.hot::before{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 2px var(--ink),0 0 0 5px rgba(255,255,255,.9),0 3px 12px rgba(0,0,0,.4);transition:inset .15s}
+.hot:hover::before,.hot.on::before{inset:6px}
+.hot span{position:absolute;left:50%;bottom:calc(100% + 2px);transform:translateX(-50%);white-space:nowrap;background:var(--ink);color:var(--on-ink);padding:5px 11px;border-radius:2px;font:600 .84rem/1.3 var(--body);opacity:0;pointer-events:none;transition:opacity .15s;z-index:2}
+.hot.r span{left:auto;right:-6px;transform:none}
+.hot:hover span,.hot:focus-visible span,.hot.on span{opacity:1}
+.panel{display:grid;background:var(--paper);color:var(--text);box-shadow:0 22px 50px rgba(0,0,0,.35)}
+.panel figure{margin:0;background:var(--tint);aspect-ratio:3/2;position:relative}
+.panel figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.swatch{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:12px;text-align:center}
+.swatch.cells{background:#E6DECF;background-image:radial-gradient(circle at 50% 50%,transparent 0 62%,rgba(15,43,52,.15) 63% 66%,transparent 67%);background-size:30px 26px}
+.swatch.steps{background:var(--ink);color:var(--on-ink);font:300 1.25rem/1.45 var(--display);flex-direction:column;gap:2px}
+.swatch.steps i{display:block;width:9px;height:9px;background:var(--accent);transform:rotate(45deg);margin:3px auto}
+.panel .pbody{display:flex;flex-direction:column;gap:12px;padding:clamp(20px,2.6vw,30px);justify-content:center;min-width:0}
+.panel h3{font-size:clamp(1.6rem,2.4vw,2.1rem)}
+.panel p{color:var(--muted);max-width:50ch}
+@media (min-width:760px){.panel{grid-template-columns:minmax(0,5fr) minmax(0,6fr)}.panel figure{aspect-ratio:auto;min-height:220px}}
+@media (min-width:920px){
+  .stage{display:block;height:clamp(620px,88vh,800px)}
+  .photo{position:absolute;inset:0;aspect-ratio:auto}
+  .shade{display:block;position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(color-mix(in srgb,var(--ink) 88%,transparent),color-mix(in srgb,var(--ink) 34%,transparent) 38%,transparent 54%,color-mix(in srgb,var(--ink) 78%,transparent))}
+  .headblock{position:absolute;z-index:3;top:0;left:0;right:0;padding-block:clamp(30px,4vw,56px) 0}
+  .headblock .lead{color:var(--on-ink);max-width:54ch}
+  .panelwrap{position:absolute;z-index:3;left:0;right:0;bottom:clamp(20px,3vw,36px);padding-block:0;pointer-events:none}
+  .panelwrap .panel{pointer-events:auto;width:min(640px,100%)}
+}
+
+/* zipscreen */
+.zip .wrap{display:grid;gap:clamp(30px,5vw,72px);align-items:center}
+@media (min-width:920px){.zip .wrap{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}}
+.zip .copy{display:grid;gap:20px;min-width:0}
+.zip h2{color:var(--on-ink)}
+.zip .copy p{max-width:54ch}
+.zip .media{margin:0;display:grid;gap:22px;min-width:0}
+.zip .media img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.vid{position:relative;background:#000}
+.vid video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.vid-btn{position:absolute;left:14px;top:14px;min-height:44px;padding:0 18px;border:1px solid rgba(255,255,255,.7);background:rgba(10,25,30,.62);color:#fff;font:600 .95rem var(--body);letter-spacing:.02em}
+.vid-btn:hover{background:rgba(10,25,30,.85)}
+.wind{display:grid;gap:8px}
+.scale{position:relative;height:6px;background:color-mix(in srgb,var(--on-ink) 18%,transparent)}
+.scale .fill{position:absolute;left:0;top:0;bottom:0;background:var(--accent)}
+.scale .mark{position:absolute;top:-7px;width:2px;height:20px;background:var(--accent)}
+.ticks{display:flex;justify-content:space-between;margin:0;padding:0;list-style:none;font-size:.86rem;color:var(--on-ink-2);font-variant-numeric:tabular-nums}
+.wind figcaption{color:var(--on-ink);font:300 1.25rem/1.35 var(--display)}
+
+/* range index */
+.range-grid{display:grid;gap:clamp(24px,4vw,56px)}
+@media (min-width:920px){.range-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);align-items:start}.preview{position:sticky;top:96px;order:2}}
+.preview{display:grid;gap:18px;min-width:0}
+.preview figure{margin:0;aspect-ratio:3/2;background:var(--tint);overflow:hidden}
+.preview figure img{width:100%;height:100%;object-fit:cover}
+.preview h3{font-size:clamp(1.8rem,3vw,2.5rem)}
+.preview p{color:var(--muted);max-width:52ch}
+.group+.group{margin-top:34px}
+.group h3{font:600 .95rem var(--body);letter-spacing:.01em;color:var(--muted);margin-bottom:6px}
+.rows{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--line)}
+.row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:14px 0;color:var(--text);font:350 clamp(1.4rem,2.3vw,1.85rem)/1.15 var(--display);letter-spacing:-.012em;transition:padding .2s}
+.row>span{opacity:.62;transition:opacity .15s}
+.row small{font:400 .88rem/1.3 var(--body);letter-spacing:0;color:var(--muted);text-align:right}
+.row:hover>span,.row[aria-pressed="true"]>span{opacity:1}
+.row[aria-pressed="true"]{padding-left:16px;box-shadow:inset 4px 0 0 var(--accent)}
+@media (max-width:919px){.row small{display:none}}
+
+/* automation */
+.auto{position:relative;color:var(--on-ink);background:var(--ink);isolation:isolate}
+.auto>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.auto::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,color-mix(in srgb,var(--ink) 92%,transparent),color-mix(in srgb,var(--ink) 55%,transparent) 55%,color-mix(in srgb,var(--ink) 15%,transparent))}
+.auto .copy{display:grid;gap:20px;max-width:46ch;padding-block:clamp(70px,11vw,150px)}
+.auto h2{color:var(--on-ink)}
+.auto p{color:var(--on-ink)}
+@media (max-width:759px){.auto::before{background:color-mix(in srgb,var(--ink) 80%,transparent)}}
+
+/* gallery */
+.mosaic{display:grid;gap:clamp(10px,1.6vw,18px);grid-template-columns:1fr}
+@media (min-width:760px){.mosaic{grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(210px,26vw,380px)}
+  .mosaic .m1{grid-column:span 7}.mosaic .m2{grid-column:span 5}.mosaic .m3,.mosaic .m4,.mosaic .m5{grid-column:span 4}}
+.mosaic figure{position:relative;margin:0;overflow:hidden;background:var(--ink);min-height:230px}
+.mosaic img{width:100%;height:100%;object-fit:cover}
+.mosaic figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 18px 14px;color:#fff;font:400 .94rem/1.35 var(--body);background:linear-gradient(transparent,rgba(5,15,18,.78))}
+.mosaic figcaption b{display:block;font:350 1.35rem/1.15 var(--display)}
+
+/* why and process */
+.why{background:var(--tint)}
+.three{display:grid;gap:30px}
+@media (min-width:820px){.three{grid-template-columns:repeat(3,1fr);gap:0}.three>div+div{border-left:1px solid var(--line);padding-left:clamp(22px,3vw,44px)}.three>div{padding-right:clamp(18px,2.4vw,36px)}}
+.three>div{display:grid;gap:14px;align-content:start;min-width:0}
+.three h3{font-size:clamp(1.6rem,2.4vw,2.1rem)}
+.three p{color:var(--muted)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:s}
+@media (min-width:820px){.steps{grid-template-columns:repeat(4,1fr)}}
+.steps li{position:relative;padding:0 0 30px 38px;min-width:0;counter-increment:s}
+.steps li::before{content:"";position:absolute;left:6px;top:10px;bottom:0;width:1px;background:var(--line)}
+.steps li:last-child::before{display:none}
+.steps li::after{content:"";position:absolute;left:0;top:7px;width:13px;height:13px;transform:rotate(45deg);background:var(--accent);outline:1px solid var(--ink);outline-offset:3px}
+.steps h3{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
+.steps h3::before{content:counter(s,decimal-leading-zero);font:400 .95rem var(--body);color:var(--muted);font-variant-numeric:tabular-nums}
+.steps p{color:var(--muted)}
+@media (min-width:820px){
+  .steps li{padding:36px 26px 0 0}
+  .steps li::before{left:0;right:0;top:9px;bottom:auto;width:auto;height:1px}
+  .steps li::after{left:0;top:3px}
+}
+
+/* suppliers */
+.suppliers{background:var(--paper);padding-block:clamp(36px,6vw,64px);border-top:1px solid var(--line)}
+.suppliers .wrap{display:grid;gap:24px}
+.suppliers h2{font-size:1.5rem}
+.logos{display:flex;flex-wrap:wrap;align-items:center;gap:22px clamp(28px,5vw,60px)}
+.logos img{height:44px;width:auto;max-width:100%;mix-blend-mode:multiply}
+.logos .long{height:auto;width:min(100%,250px)}
+
+/* quote */
+.quote .wrap{display:grid;gap:clamp(34px,6vw,84px)}
+@media (min-width:920px){.quote .wrap{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}}
+.quote .left{display:grid;gap:22px;align-content:start;min-width:0}
+.quote h2{color:var(--on-ink)}
+.contact{margin:6px 0 0;display:grid;gap:0}
+.contact>div{display:grid;grid-template-columns:7.5rem minmax(0,1fr) auto;gap:6px 14px;align-items:baseline;padding:13px 0;border-top:1px solid color-mix(in srgb,var(--on-ink) 18%,transparent)}
+.contact dt{color:var(--on-ink-2);font-size:.92rem}
+.contact dd{margin:0;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.copy-btn{background:none;border:1.5px solid color-mix(in srgb,var(--on-ink) 40%,transparent);color:var(--on-ink);border-radius:2px;min-height:36px;padding:4px 12px;font:600 .84rem var(--body)}
+.copy-btn:hover{border-color:var(--accent)}
+.maplink{color:var(--accent);font-weight:600;text-underline-offset:4px;justify-self:start}
+form{background:var(--paper);color:var(--text);padding:clamp(22px,3.4vw,40px);display:grid;gap:18px;min-width:0}
+.two{display:grid;gap:18px}
+@media (min-width:600px){.two{grid-template-columns:1fr 1fr}}
+label{display:grid;gap:6px;font-weight:600;font-size:.95rem;min-width:0}
+input,select,textarea{font:400 1rem var(--body);color:var(--text);background:#fff;border:1.5px solid color-mix(in srgb,var(--ink) 30%,transparent);border-radius:2px;padding:11px 12px;min-height:46px;width:100%}
+textarea{min-height:120px;resize:vertical}
+input:hover,select:hover,textarea:hover{border-color:var(--ink)}
+.err{color:var(--err);font-weight:500;font-size:.88rem;min-height:0}
+.done{display:none;padding:14px 16px;background:var(--tint);border-left:4px solid var(--accent)}
+.done.show{display:block}
+.fine{font-size:.9rem;color:var(--muted)}
+form .btn-primary{justify-self:start}
+.quote form p{color:var(--muted)}
+
+/* footer */
+footer{background:var(--ink-2);color:var(--on-ink);padding-block:clamp(44px,7vw,80px) 28px}
+footer .wrap{display:grid;gap:30px}
+@media (min-width:820px){footer .wrap{grid-template-columns:1.3fr 1fr 1fr 1.1fr}}
+footer h3{font:600 .95rem var(--body);color:var(--on-ink-2);margin-bottom:10px;letter-spacing:.01em}
+footer p,footer li{color:var(--on-ink-2);font-size:.97rem}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+footer a{text-decoration:none;color:var(--on-ink)}
+footer a:hover{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:4px}
+footer .brandline{font:300 1.7rem var(--display);color:var(--on-ink);margin-bottom:10px}
+footer .legal{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;padding-top:22px;border-top:1px solid color-mix(in srgb,var(--on-ink) 18%,transparent);font-size:.9rem;color:var(--on-ink-2)}
+
+/* photo viewer, colour dock, call bar */
+dialog#lb{border:0;padding:0;background:transparent;max-width:min(1100px,94vw);width:100%;color:#fff;overflow:visible}
+dialog#lb::backdrop{background:rgba(6,16,20,.88)}
+.lb-in{position:relative;background:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb-in img{display:block;width:100%;height:auto;max-height:76vh;object-fit:contain;background:#000}
+.lb-bar{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;padding:14px 18px}
+.lb-bar b{font:350 1.4rem var(--display);flex:1 1 auto}
+.lb-bar button{background:none;border:1.5px solid var(--on-ink);color:var(--on-ink);border-radius:2px;min-height:46px;padding:8px 18px;font:600 .95rem var(--body)}
+.lb-bar a{display:inline-flex;align-items:center;min-height:46px;padding:8px 18px;border-radius:2px;background:var(--accent);color:var(--on-accent);font-weight:600;text-decoration:none}
+.lb-x{position:absolute;top:10px;right:10px;z-index:2;width:44px;height:44px;border-radius:50%;border:1.5px solid #fff;background:var(--ink);color:#fff;font-size:1.4rem;padding:0}
+.dock{position:fixed;z-index:60;left:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:8px;background:var(--paper);color:var(--text);border:1px solid var(--line);border-radius:999px;padding:6px 12px 6px 16px;box-shadow:0 10px 30px rgba(0,0,0,.22)}
+.dock span{font:600 .84rem var(--body)}
+.dock button{width:28px;height:28px;border-radius:50%;border:2px solid var(--paper);background:linear-gradient(135deg,var(--a) 0 50%,var(--b) 50%);box-shadow:0 0 0 1.5px var(--line);padding:0}
+.dock button[aria-pressed="true"]{box-shadow:0 0 0 3px var(--ink)}
+.callbar{display:block;position:fixed;z-index:50;left:0;right:0;bottom:0;padding:13px 16px calc(13px + env(safe-area-inset-bottom,0px));background:var(--accent);color:var(--on-accent);text-align:center;font-weight:700;text-decoration:none}
+@media (min-width:760px){.callbar{display:none}}
+@media (max-width:759px){.dock{bottom:calc(66px + env(safe-area-inset-bottom,0px));left:10px;padding:5px 10px}.dock span{display:none}body{padding-bottom:56px}}
+
+/* palettes: each swaps the ink, ground and accent, and recolours the blind-slat cursor */
+body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z'/%3E%3C/clipPath%3E%3C/defs%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='%230F2B34'/%3E%3Cg clip-path='url(%23c)' stroke='%23C79B4B' stroke-width='1.7'%3E%3Cpath d='M0 6h28M0 10.5h28M0 15h28M0 19.5h28'/%3E%3C/g%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='none' stroke='white' stroke-width='1.3' stroke-linejoin='round'/%3E%3C/svg%3E") 2 1,auto}
+a,button,select,summary,label[for],.hot{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z'/%3E%3C/clipPath%3E%3C/defs%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='%23C79B4B'/%3E%3Cg clip-path='url(%23c)' stroke='%230F2B34' stroke-width='1.7'%3E%3Cpath d='M0 6h28M0 10.5h28M0 15h28M0 19.5h28'/%3E%3C/g%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='none' stroke='%230F2B34' stroke-width='1.3' stroke-linejoin='round'/%3E%3Ccircle cx='21' cy='21' r='4' fill='%230F2B34'/%3E%3Ccircle cx='21' cy='21' r='1.6' fill='%23C79B4B'/%3E%3C/svg%3E") 2 1,pointer}
+:root[data-palette="graphite"]{--ink:#1D2024;--ink-2:#2C3035;--ground:#ECEBE8;--paper:#F8F7F5;--accent:#CC6B3E;--on-accent:#1D2024}
+:root[data-palette="graphite"] body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z'/%3E%3C/clipPath%3E%3C/defs%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='%231D2024'/%3E%3Cg clip-path='url(%23c)' stroke='%23CC6B3E' stroke-width='1.7'%3E%3Cpath d='M0 6h28M0 10.5h28M0 15h28M0 19.5h28'/%3E%3C/g%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='none' stroke='white' stroke-width='1.3' stroke-linejoin='round'/%3E%3C/svg%3E") 2 1,auto}
+:root[data-palette="graphite"] a,:root[data-palette="graphite"] button,:root[data-palette="graphite"] select,:root[data-palette="graphite"] summary,:root[data-palette="graphite"] label[for],:root[data-palette="graphite"] .hot{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z'/%3E%3C/clipPath%3E%3C/defs%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='%23CC6B3E'/%3E%3Cg clip-path='url(%23c)' stroke='%231D2024' stroke-width='1.7'%3E%3Cpath d='M0 6h28M0 10.5h28M0 15h28M0 19.5h28'/%3E%3C/g%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='none' stroke='%231D2024' stroke-width='1.3' stroke-linejoin='round'/%3E%3Ccircle cx='21' cy='21' r='4' fill='%231D2024'/%3E%3Ccircle cx='21' cy='21' r='1.6' fill='%23CC6B3E'/%3E%3C/svg%3E") 2 1,pointer}
+:root[data-palette="eucalypt"]{--ink:#14301F;--ink-2:#1F4A31;--ground:#E7EEE7;--paper:#F5F9F4;--accent:#B9CC6E;--on-accent:#14301F}
+:root[data-palette="eucalypt"] body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z'/%3E%3C/clipPath%3E%3C/defs%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='%2314301F'/%3E%3Cg clip-path='url(%23c)' stroke='%23B9CC6E' stroke-width='1.7'%3E%3Cpath d='M0 6h28M0 10.5h28M0 15h28M0 19.5h28'/%3E%3C/g%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='none' stroke='white' stroke-width='1.3' stroke-linejoin='round'/%3E%3C/svg%3E") 2 1,auto}
+:root[data-palette="eucalypt"] a,:root[data-palette="eucalypt"] button,:root[data-palette="eucalypt"] select,:root[data-palette="eucalypt"] summary,:root[data-palette="eucalypt"] label[for],:root[data-palette="eucalypt"] .hot{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z'/%3E%3C/clipPath%3E%3C/defs%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='%23B9CC6E'/%3E%3Cg clip-path='url(%23c)' stroke='%2314301F' stroke-width='1.7'%3E%3Cpath d='M0 6h28M0 10.5h28M0 15h28M0 19.5h28'/%3E%3C/g%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='none' stroke='%2314301F' stroke-width='1.3' stroke-linejoin='round'/%3E%3Ccircle cx='21' cy='21' r='4' fill='%2314301F'/%3E%3Ccircle cx='21' cy='21' r='1.6' fill='%23B9CC6E'/%3E%3C/svg%3E") 2 1,pointer}
+:root[data-palette="mulberry"]{--ink:#2A1530;--ink-2:#402248;--ground:#EEE8EF;--paper:#F9F6F9;--accent:#E0965F;--on-accent:#2A1530}
+:root[data-palette="mulberry"] body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z'/%3E%3C/clipPath%3E%3C/defs%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='%232A1530'/%3E%3Cg clip-path='url(%23c)' stroke='%23E0965F' stroke-width='1.7'%3E%3Cpath d='M0 6h28M0 10.5h28M0 15h28M0 19.5h28'/%3E%3C/g%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='none' stroke='white' stroke-width='1.3' stroke-linejoin='round'/%3E%3C/svg%3E") 2 1,auto}
+:root[data-palette="mulberry"] a,:root[data-palette="mulberry"] button,:root[data-palette="mulberry"] select,:root[data-palette="mulberry"] summary,:root[data-palette="mulberry"] label[for],:root[data-palette="mulberry"] .hot{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z'/%3E%3C/clipPath%3E%3C/defs%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='%23E0965F'/%3E%3Cg clip-path='url(%23c)' stroke='%232A1530' stroke-width='1.7'%3E%3Cpath d='M0 6h28M0 10.5h28M0 15h28M0 19.5h28'/%3E%3C/g%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='none' stroke='%232A1530' stroke-width='1.3' stroke-linejoin='round'/%3E%3Ccircle cx='21' cy='21' r='4' fill='%232A1530'/%3E%3Ccircle cx='21' cy='21' r='1.6' fill='%23E0965F'/%3E%3C/svg%3E") 2 1,pointer}
+:root[data-palette="navy"]{--ink:#0F1E3D;--ink-2:#1B3160;--ground:#E6EBF3;--paper:#F5F7FB;--accent:#E3B23C;--on-accent:#0F1E3D}
+:root[data-palette="navy"] body{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z'/%3E%3C/clipPath%3E%3C/defs%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='%230F1E3D'/%3E%3Cg clip-path='url(%23c)' stroke='%23E3B23C' stroke-width='1.7'%3E%3Cpath d='M0 6h28M0 10.5h28M0 15h28M0 19.5h28'/%3E%3C/g%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='none' stroke='white' stroke-width='1.3' stroke-linejoin='round'/%3E%3C/svg%3E") 2 1,auto}
+:root[data-palette="navy"] a,:root[data-palette="navy"] button,:root[data-palette="navy"] select,:root[data-palette="navy"] summary,:root[data-palette="navy"] label[for],:root[data-palette="navy"] .hot{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z'/%3E%3C/clipPath%3E%3C/defs%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='%23E3B23C'/%3E%3Cg clip-path='url(%23c)' stroke='%230F1E3D' stroke-width='1.7'%3E%3Cpath d='M0 6h28M0 10.5h28M0 15h28M0 19.5h28'/%3E%3C/g%3E%3Cpath d='M2 1v21l5.5-5 4 9 3.5-1.5-4-8.7h7.5z' fill='none' stroke='%230F1E3D' stroke-width='1.3' stroke-linejoin='round'/%3E%3Ccircle cx='21' cy='21' r='4' fill='%230F1E3D'/%3E%3Ccircle cx='21' cy='21' r='1.6' fill='%23E3B23C'/%3E%3C/svg%3E") 2 1,pointer}
+input,textarea{cursor:text}
+/* v8: customer needs, slideshow, visualizer, pricing, service area, watermarks */
+.hero{position:relative;overflow:hidden}
+.hero::before{content:"Selbys";position:absolute;right:-1vw;top:-1vw;font:italic 300 clamp(9rem,25vw,23rem)/1 var(--display);color:transparent;-webkit-text-stroke:1px color-mix(in srgb,var(--ink) 12%,transparent);pointer-events:none;white-space:nowrap}
+.hero .wrap{position:relative}
+.hero-note p.small{font-size:.92rem;color:var(--muted)}
+.show{position:relative;margin-top:clamp(28px,4.5vw,52px);background:var(--ink);overflow:hidden;aspect-ratio:4/3}
+@media (min-width:760px){.show{aspect-ratio:21/9}}
+.slide{position:absolute;inset:0;margin:0;opacity:0}
+.slide.on{opacity:1}
+.slide img{width:100%;height:100%;object-fit:cover}
+.show .slats{z-index:3}
+.wm{position:absolute;z-index:4;top:14px;right:18px;font:italic 300 clamp(1.1rem,2vw,1.6rem)/1 var(--display);color:rgba(255,255,255,.82);text-shadow:0 1px 10px rgba(0,0,0,.4);pointer-events:none;letter-spacing:.01em}
+.wm::before{content:"";display:inline-block;width:7px;height:7px;background:var(--accent);transform:rotate(45deg);margin-right:9px;vertical-align:middle}
+.show-ui{position:absolute;z-index:5;left:0;right:0;bottom:0;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 18px;padding:54px clamp(14px,2.4vw,26px) 14px;background:linear-gradient(transparent,rgba(5,15,18,.78));color:#fff}
+.show-cap{min-width:0;max-width:46ch;font-size:.95rem;line-height:1.4}
+.show-cap b{display:block;font:350 clamp(1.2rem,2.2vw,1.7rem)/1.15 var(--display)}
+.show-btns{display:flex;align-items:center;gap:6px}
+.show-btns button{min-width:44px;min-height:44px;border:1.5px solid rgba(255,255,255,.7);background:rgba(8,24,30,.45);color:#fff;border-radius:2px;font:600 .9rem var(--body);padding:0 12px}
+.show-btns button:hover{border-color:var(--accent)}
+.dots{display:flex}
+.dots button{position:relative;width:26px;min-width:26px;height:44px;padding:0;border:0;background:none}
+.dots button::before{content:"";position:absolute;left:50%;top:50%;width:9px;height:9px;margin:-4.5px;background:rgba(255,255,255,.5);transform:rotate(45deg)}
+.dots button[aria-current="true"]::before{background:var(--accent);width:11px;height:11px;margin:-5.5px}
+@media (min-width:760px){.facts{grid-template-columns:repeat(4,1fr)}}
+.facts li{font-size:clamp(1.15rem,1.7vw,1.4rem)}
+
+/* find your fit */
+.fit-grid{display:grid;gap:clamp(26px,4vw,60px)}
+@media (min-width:960px){.fit-grid{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);align-items:start}.fit-ctl{position:sticky;top:96px}}
+fieldset{border:0;margin:0 0 26px;padding:0;min-width:0}
+legend{font:600 1rem var(--body);margin-bottom:12px;padding:0}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{position:relative;display:block;font-weight:500}
+.pill input{position:absolute;inset:0;opacity:0;margin:0;width:100%;height:100%;min-height:0;padding:0}
+.pill span{display:flex;align-items:center;min-height:46px;padding:8px 16px;border:1.5px solid var(--line);background:var(--paper);border-radius:2px;font-size:.98rem}
+.pill:hover span{border-color:var(--ink)}
+.pill input:checked+span{background:var(--ink);border-color:var(--ink);color:var(--on-ink);font-weight:600}
+.pill input:focus-visible+span{outline:3px solid var(--focus);outline-offset:2px}
+.fit-note{color:var(--muted);font-size:.95rem;max-width:44ch}
+.results{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.res{display:grid;background:var(--paper);border:1px solid var(--line)}
+@media (min-width:640px){.res{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}}
+.res figure{margin:0;aspect-ratio:3/2;background:var(--tint);overflow:hidden}
+.res figure img{width:100%;height:100%;object-fit:cover}
+@media (min-width:640px){.res figure{aspect-ratio:auto;min-height:200px}}
+.res .rb{display:grid;gap:10px;align-content:center;padding:clamp(16px,2.2vw,26px);min-width:0}
+.res h3{font-size:clamp(1.5rem,2.2vw,1.95rem)}
+.res p{color:var(--muted)}
+.res .suits{font-size:.92rem;color:var(--text);font-weight:600}
+.res .cta-row .btn{min-height:44px;padding-inline:18px}
+
+/* try a blind */
+.try{background:var(--tint)}
+.try-grid{display:grid;gap:clamp(28px,5vw,72px)}
+@media (min-width:920px){.try-grid{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:center}}
+.win{position:relative;width:min(100%,400px);margin-inline:auto;aspect-ratio:4/5;border:14px solid var(--paper);outline:1px solid var(--line);background:#cfdde3;overflow:hidden;box-shadow:0 26px 54px rgba(0,0,0,.22)}
+.view{position:absolute;inset:0;background:#bcd3e0 url(img/view.jpg) center top/cover}
+.win::before{content:"";position:absolute;z-index:3;left:0;right:0;top:0;height:10px;background:var(--ink)}
+.win::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(125deg,rgba(255,255,255,.22),transparent 38%)}
+.blind{position:absolute;z-index:1;left:0;right:0;top:0;height:var(--low,45%);background:var(--fab,#EDE6D6);opacity:var(--op,.72);border-bottom:8px solid color-mix(in srgb,var(--fab,#EDE6D6) 62%,#000);transition:height .12s}
+.win[data-style="roller"] .blind{background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.08) 0 2px,rgba(0,0,0,.05) 2px 4px)}
+.win[data-style="roman"] .blind{background-image:repeating-linear-gradient(180deg,transparent 0 50px,rgba(0,0,0,.17) 50px 56px,rgba(255,255,255,.14) 56px 60px)}
+.win[data-style="venetian"] .blind{background:repeating-linear-gradient(180deg,var(--fab,#EDE6D6) 0 14px,color-mix(in srgb,var(--fab,#EDE6D6) 55%,#000) 14px 16px,transparent 16px 19px);opacity:.97}
+.win[data-lowered="0"] .blind{border-bottom-width:0}
+.try-ctl{display:grid;gap:4px;min-width:0}
+.sw-row{display:flex;flex-wrap:wrap;gap:10px}
+.sw{position:relative;display:block}
+.sw input{position:absolute;inset:0;opacity:0;margin:0;width:100%;height:100%;min-height:0;padding:0}
+.sw span{display:block;width:44px;height:44px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.2)}
+.sw input:checked+span{box-shadow:inset 0 0 0 1px rgba(0,0,0,.2),0 0 0 3px var(--tint),0 0 0 5px var(--ink)}
+.sw input:focus-visible+span{outline:3px solid var(--focus);outline-offset:6px}
+.range-in{width:100%;min-height:44px;padding:0;accent-color:var(--ink)}
+.meter{height:8px;background:color-mix(in srgb,var(--ink) 14%,transparent);margin-top:8px}
+.meter i{display:block;height:100%;width:var(--dl,60%);background:var(--accent);transition:width .12s}
+.daylight{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-weight:600}
+.daylight b{font:350 2rem/1 var(--display);font-variant-numeric:tabular-nums}
+.try-ctl .fine{color:var(--muted);font-size:.9rem}
+
+/* pricing */
+.price-wrap{overflow-x:auto}
+.price{width:100%;border-collapse:collapse;min-width:480px}
+.price caption{text-align:left;color:var(--muted);padding-bottom:12px;font-size:.95rem;max-width:64ch}
+.price th,.price td{text-align:left;padding:15px 12px 15px 0;border-top:1px solid var(--line);vertical-align:baseline}
+.price tr:last-child th,.price tr:last-child td{border-bottom:1px solid var(--line)}
+.price th{font:350 clamp(1.25rem,2vw,1.6rem)/1.2 var(--display);width:52%}
+.price td{font-variant-numeric:tabular-nums}
+.price td b{font:350 1.6rem/1 var(--display)}
+.price td small{display:block;color:var(--muted);font-size:.86rem}
+.tag{display:inline-block;background:var(--accent);color:var(--on-accent);font:600 .84rem var(--body);padding:3px 10px;margin-left:12px;vertical-align:middle;border-radius:2px}
+.price-cta{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:26px}
+.price-cta p{color:var(--muted);max-width:52ch}
+
+/* included services */
+.incl{display:grid;gap:0;margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
+@media (min-width:760px){.incl{grid-template-columns:repeat(2,1fr);column-gap:clamp(24px,5vw,72px)}}
+.incl li{display:grid;gap:6px;padding:20px 0;border-bottom:1px solid var(--line);min-width:0}
+.incl h3{font-size:clamp(1.35rem,2vw,1.7rem)}
+.incl p{color:var(--muted)}
+.mq2{background:var(--ink);border-block:0}
+.mq2 .mq-track{animation-direction:reverse;animation-duration:80s}
+.mq2 .mq-group li{color:var(--on-ink);font-size:clamp(1.15rem,2vw,1.55rem)}
+
+/* gallery zoom and watermark */
+.mosaic figure .gz{position:absolute;inset:0;z-index:1;width:100%;height:100%;background:none;border:0;padding:0}
+.mosaic figure .wm{top:12px;right:14px;font-size:1.05rem}
+.mosaic figcaption{z-index:2;pointer-events:none}
+.zoomhint{position:absolute;z-index:2;top:12px;left:14px;background:rgba(8,24,30,.62);color:#fff;font:600 .8rem var(--body);padding:4px 10px;border-radius:2px;pointer-events:none}
+
+/* service area */
+.area .wrap{display:grid;gap:clamp(30px,5vw,72px)}
+@media (min-width:920px){.area .wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}}
+.area .left,.area .right{display:grid;gap:20px;min-width:0;align-content:start}
+.area h2{color:var(--on-ink)}
+.pc{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.pc label{flex:1 1 180px;color:var(--on-ink);font-weight:600}
+.pc input{background:#fff;color:var(--ink)}
+.pc-out{min-height:1.6em;color:var(--on-ink);font-weight:500}
+.subs{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.subs li{border:1px solid color-mix(in srgb,var(--on-ink) 28%,transparent);padding:6px 14px;font-size:.95rem;color:var(--on-ink)}
+.addr{margin:0;font-style:normal;color:var(--on-ink)}
+.addr a{color:var(--accent);font-weight:600;text-underline-offset:4px}
+.ink .tag{margin-left:0}
+
+/* footer wordmark, call bar */
+footer{position:relative;overflow:hidden}
+footer .wrap{position:relative;z-index:1}
+.bigmark{position:absolute;left:50%;bottom:-.18em;transform:translateX(-50%);font:italic 300 clamp(8rem,26vw,24rem)/1 var(--display);color:transparent;-webkit-text-stroke:1px color-mix(in srgb,var(--on-ink) 14%,transparent);pointer-events:none;white-space:nowrap}
+.callbar{display:flex;padding:0;background:none}
+.callbar a{flex:1;min-height:54px;display:flex;align-items:center;justify-content:center;font-weight:700;text-decoration:none;padding-bottom:env(safe-area-inset-bottom,0px)}
+.callbar a:first-child{background:var(--ink);color:var(--on-ink)}
+.callbar a:last-child{background:var(--accent);color:var(--on-accent)}
+@media (min-width:760px){.callbar{display:none}}
+@media (max-width:759px){.dock{bottom:calc(66px + env(safe-area-inset-bottom,0px))}body{padding-bottom:54px}}
+.lb-view{position:relative;overflow:hidden;background:#000;cursor:zoom-in}
+.lb-view.z{cursor:zoom-out}
+.lb-view img{transition:transform .2s;transform-origin:var(--ox,50%) var(--oy,50%)}
+.lb-view.z img{transform:scale(2.2)}
+.lb-view::after{content:"Selbys Blinds";position:absolute;right:14px;bottom:12px;font:italic 300 1.2rem var(--display);color:rgba(255,255,255,.7);pointer-events:none;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.lb-hint{font-size:.86rem;color:var(--on-ink-2);flex-basis:100%}
+</style>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="#top" aria-label="Selbys Blinds, home"><img src="img/Selbys-logo-300px.jpg" alt="Selbys Blinds" width="52" height="52"></a>
+  <nav class="nav" id="nav" aria-label="Main">
+    <a href="#fit">Find your fit</a>
+    <a href="#house">The house</a>
+    <a href="#range">The range</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#gallery">Our work</a>
+    <a href="#area">Service area</a>
+    <a href="#quote">Contact</a>
+  </nav>
+  <div class="hdr-right">
+    <span class="hdr-tel">03 9775 5777</span>
+    <a class="btn btn-primary" href="#quote">Book a measure</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  </div>
+</div></header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <h1>Blinds, awnings and shutters, made in our own Mornington Peninsula factory.</h1>
+      <div class="hero-note">
+        <p>Selbys Blinds is a Melbourne based manufacturer, distributor and installer of high quality, Australian made interior and exterior window furnishings, trading since 1979.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#quote">Book a measure and quote</a>
+          <a class="btn btn-line" href="#fit">Find the right fit</a>
+        </div>
+        <p class="small">Prefer to talk? Call <b>03 9775 5777</b> or <b>1800 75 85 96</b>.</p>
+      </div>
+    </div>
+    <div class="show" id="show" role="region" aria-roledescription="carousel" aria-label="Selbys installations">
+      <div class="slides" id="slides">
+        <figure class="slide on"><img src="img/Zipscreen-hero-1500_700.jpg" alt="Zipscreen exterior blinds enclosing a poolside alfresco area" width="1500" height="700" fetchpriority="high"></figure>
+      </div>
+      <div class="slats" aria-hidden="true"><i style="--n:0"></i><i style="--n:1"></i><i style="--n:2"></i><i style="--n:3"></i><i style="--n:4"></i><i style="--n:5"></i><i style="--n:6"></i><i style="--n:7"></i><i style="--n:8"></i><i style="--n:9"></i><i style="--n:10"></i><i style="--n:11"></i></div>
+      <div class="wm" aria-hidden="true">Selbys Blinds</div>
+      <div class="show-ui">
+        <div class="show-cap" aria-live="off"><b id="sh-t">Zipscreen blinds, poolside home</b><span id="sh-c">Exterior blinds that enclose an alfresco area.</span></div>
+        <div class="show-btns">
+          <button type="button" id="sh-prev" aria-label="Previous photo">&lsaquo;</button>
+          <div class="dots" id="sh-dots"></div>
+          <button type="button" id="sh-next" aria-label="Next photo">&rsaquo;</button>
+          <button type="button" id="sh-play" aria-pressed="false">Pause</button>
+        </div>
+      </div>
+    </div>
+    <ul class="facts">
+      <li><span>Trading since</span>1979</li>
+      <li><span>Built to size in</span>Langwarrin, Victoria</li>
+      <li><span>Fitted by</span>Selbys installers</li>
+      <li><span>Projects</span>Domestic and commercial</li>
+    </ul>
+  </div>
+</section>
+
+<div class="marquee" role="region" aria-label="Selbys products and services">
+  <div class="mq-track">
+    <ul class="mq-group"><li><img src="img/mq/zip.jpg" alt="" width="288" height="192"><span>Zipscreen blinds</span></li><li><img src="img/mq/awn.jpg" alt="" width="288" height="192"><span>Auto awnings</span></li><li><img src="img/mq/fix.jpg" alt="" width="288" height="192"><span>Fixed guide awnings</span></li><li><img src="img/mq/drop.jpg" alt="" width="288" height="192"><span>Drop crank awnings</span></li><li><img src="img/mq/roll.jpg" alt="" width="288" height="192"><span>Roller blinds</span></li><li><img src="img/mq/panel.jpg" alt="" width="288" height="192"><span>Panel glides</span></li><li><img src="img/mq/vert.jpg" alt="" width="288" height="192"><span>Vertical blinds</span></li><li><img src="img/mq/roman.jpg" alt="" width="288" height="192"><span>Roman blinds</span></li><li><img src="img/mq/curt.jpg" alt="" width="288" height="192"><span>Curtains and drapes</span></li><li><img src="img/mq/timber.jpg" alt="" width="288" height="192"><span>Timber venetians</span></li><li><img src="img/mq/alu.jpg" alt="" width="288" height="192"><span>Aluminium venetians</span></li><li><img src="img/mq/plant.jpg" alt="" width="288" height="192"><span>Plantation shutters</span></li><li><img src="img/mq/auto.jpg" alt="" width="288" height="192"><span>Automation</span></li><li><img src="img/mq/comm.jpg" alt="" width="288" height="192"><span>Commercial projects</span></li></ul>
+    <ul class="mq-group" aria-hidden="true"><li><img src="img/mq/zip.jpg" alt="" width="288" height="192"><span>Zipscreen blinds</span></li><li><img src="img/mq/awn.jpg" alt="" width="288" height="192"><span>Auto awnings</span></li><li><img src="img/mq/fix.jpg" alt="" width="288" height="192"><span>Fixed guide awnings</span></li><li><img src="img/mq/drop.jpg" alt="" width="288" height="192"><span>Drop crank awnings</span></li><li><img src="img/mq/roll.jpg" alt="" width="288" height="192"><span>Roller blinds</span></li><li><img src="img/mq/panel.jpg" alt="" width="288" height="192"><span>Panel glides</span></li><li><img src="img/mq/vert.jpg" alt="" width="288" height="192"><span>Vertical blinds</span></li><li><img src="img/mq/roman.jpg" alt="" width="288" height="192"><span>Roman blinds</span></li><li><img src="img/mq/curt.jpg" alt="" width="288" height="192"><span>Curtains and drapes</span></li><li><img src="img/mq/timber.jpg" alt="" width="288" height="192"><span>Timber venetians</span></li><li><img src="img/mq/alu.jpg" alt="" width="288" height="192"><span>Aluminium venetians</span></li><li><img src="img/mq/plant.jpg" alt="" width="288" height="192"><span>Plantation shutters</span></li><li><img src="img/mq/auto.jpg" alt="" width="288" height="192"><span>Automation</span></li><li><img src="img/mq/comm.jpg" alt="" width="288" height="192"><span>Commercial projects</span></li></ul>
+  </div>
+</div>
+
+<section id="fit" class="sec">
+  <div class="wrap">
+    <div class="head">
+      <h2>Find the right fit for your window</h2>
+      <p class="lead">You do not need to know the difference between a roller, a venetian and a honeycomb blind. Tell us the room and what you want it to do, and we will point you to the products that suit.</p>
+    </div>
+    <div class="fit-grid">
+      <div class="fit-ctl">
+        <fieldset>
+          <legend>Which room?</legend>
+          <div class="pills" id="room-pills">
+            <label class="pill"><input type="radio" name="room" value="bed" checked><span>Bedroom</span></label>
+            <label class="pill"><input type="radio" name="room" value="living"><span>Living room</span></label>
+            <label class="pill"><input type="radio" name="room" value="office"><span>Home office</span></label>
+            <label class="pill"><input type="radio" name="room" value="kitchen"><span>Kitchen or bathroom</span></label>
+            <label class="pill"><input type="radio" name="room" value="alfresco"><span>Alfresco or patio</span></label>
+            <label class="pill"><input type="radio" name="room" value="large"><span>Large windows or glass walls</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>What should it do?</legend>
+          <div class="pills" id="goal-pills">
+            <label class="pill"><input type="radio" name="goal" value="dark" checked><span>Darken the room</span></label>
+            <label class="pill"><input type="radio" name="goal" value="heat"><span>Cut heat and glare</span></label>
+            <label class="pill"><input type="radio" name="goal" value="privacy"><span>Keep it private</span></label>
+            <label class="pill"><input type="radio" name="goal" value="motor"><span>Motorised, for hard to reach windows</span></label>
+            <label class="pill"><input type="radio" name="goal" value="style"><span>Look beautiful</span></label>
+            <label class="pill"><input type="radio" name="goal" value="outdoor"><span>Shade an outdoor area</span></label>
+          </div>
+        </fieldset>
+        <p class="fit-note">Still not sure? Book a measure and we will advise on site, with the product and fabric samples in your own light.</p>
+      </div>
+      <ul class="results" id="results" aria-live="polite"></ul>
+    </div>
+  </div>
+</section>
+
+<section id="house" class="house" aria-labelledby="house-h">
+  <div class="stage" id="stage">
+    <div class="photo" id="photo">
+      <img id="scene-img" src="img/Zipscreen-hero-1500_700.jpg" alt="" width="1500" height="700">
+      <div id="hots"></div>
+    </div>
+    <div class="shade" aria-hidden="true"></div>
+    <div class="headblock">
+      <div class="wrap">
+        <h2 id="house-h">Every window in the house</h2>
+        <p class="lead">A real Selbys home, room by room. Choose a space, then select a marker to see the product and how it looks.</p>
+        <ul class="scenes" id="scenes" aria-label="Choose a space"></ul>
+      </div>
+    </div>
+    <div class="panelwrap">
+      <div class="wrap">
+        <div class="panel" id="panel" aria-live="polite">
+          <figure>
+            <img id="p-img" src="img/Zipscreen-hero-1500_700.jpg" alt="Zipscreen blinds around a pool area" width="1500" height="700">
+            <div class="swatch cells" id="p-cells"></div>
+            <div class="swatch steps" id="p-steps"><span>Measure</span><i></i><span>Quote</span><i></i><span>Make</span><i></i><span>Install</span></div>
+          </figure>
+          <div class="pbody">
+            <h3 id="p-name">Zipscreen exterior blinds</h3>
+            <p id="p-desc">A high quality track guided blind system for pergolas, verandas and balconies. Made by Selbys right here in Australia.</p>
+            <a class="btn btn-primary ask" id="p-ask" href="#quote" data-product="Zipscreen exterior blinds" style="align-self:flex-start">Ask about this</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="try" class="try sec">
+  <div class="wrap try-grid">
+    <div class="win" id="win" data-style="roller" data-lowered="1" aria-hidden="true">
+      <div class="view"></div>
+      <div class="blind"></div>
+    </div>
+    <div class="try-ctl">
+      <div class="head" style="margin-bottom:12px"><h2>Try a blind on a window</h2><p class="lead">Pick a style, colour and light control, then lower the blind to see how much daylight is left. The colours are examples. Final fabrics are chosen with you from the Selbys ranges.</p></div>
+      <fieldset>
+        <legend>Style</legend>
+        <div class="pills">
+          <label class="pill"><input type="radio" name="vstyle" value="roller" checked><span>Roller</span></label>
+          <label class="pill"><input type="radio" name="vstyle" value="roman"><span>Roman</span></label>
+          <label class="pill"><input type="radio" name="vstyle" value="venetian"><span>Venetian</span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Colour</legend>
+        <div class="sw-row" role="radiogroup" aria-label="Fabric colour">
+          <label class="sw"><input type="radio" name="vcol" value="#EDE6D6" data-n="ivory" checked aria-label="Ivory"><span style="--c:#EDE6D6"></span></label>
+          <label class="sw"><input type="radio" name="vcol" value="#BDB6A8" data-n="stone" aria-label="Stone"><span style="--c:#BDB6A8"></span></label>
+          <label class="sw"><input type="radio" name="vcol" value="#9DAF98" data-n="sage" aria-label="Sage"><span style="--c:#9DAF98"></span></label>
+          <label class="sw"><input type="radio" name="vcol" value="#5C6B73" data-n="slate" aria-label="Slate"><span style="--c:#5C6B73"></span></label>
+          <label class="sw"><input type="radio" name="vcol" value="#22344F" data-n="navy" aria-label="Navy"><span style="--c:#22344F"></span></label>
+          <label class="sw"><input type="radio" name="vcol" value="#B8654A" data-n="terracotta" aria-label="Terracotta"><span style="--c:#B8654A"></span></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Light control</legend>
+        <div class="pills">
+          <label class="pill"><input type="radio" name="vlight" value="0.4" data-n="sheer"><span>Sheer</span></label>
+          <label class="pill"><input type="radio" name="vlight" value="0.75" data-n="light filtering" checked><span>Light filtering</span></label>
+          <label class="pill"><input type="radio" name="vlight" value="1" data-n="blockout"><span>Blockout</span></label>
+        </div>
+      </fieldset>
+      <label for="vlow" style="margin-bottom:10px">Lower the blind
+        <input id="vlow" class="range-in" type="range" min="0" max="100" value="45"></label>
+      <div class="daylight"><span>Daylight in the room</span><b id="dl-n">70%</b></div>
+      <div class="meter" aria-hidden="true"><i></i></div>
+      <div class="cta-row" style="margin-top:20px"><button class="btn btn-primary" type="button" id="vask">Ask about this look</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="exterior" class="zip ink sec">
+  <div class="wrap">
+    <div class="copy">
+      <h2>Zipscreen exterior blinds</h2>
+      <p>Zipscreen is a high quality track guided blind system that suits multiple domestic and commercial applications. Its superior locking system, aluminium frame and hooding, steel pins and bearings make it a popular choice for people and businesses wanting a long lasting, stylish outdoor blind.</p>
+      <p>Ideal for pergolas, verandas and balconies, and manufactured by Selbys Blinds right here in Australia.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary ask" data-product="Zipscreen exterior blinds" href="#quote">Ask about Zipscreen</a>
+        <a class="btn btn-line" href="https://selbysblindgroup.com.au/zipscreen-blinds/" target="_blank" rel="noopener">Zipscreen on the Selbys site</a>
+      </div>
+    </div>
+    <figure class="media">
+      <div class="vid">
+        <video id="zv" src="video/zipscreen.mp4" poster="video/zipscreen-poster.jpg" muted loop playsinline preload="metadata" width="1280" height="720" aria-label="Short film of Zipscreen blinds on a patio, a veranda and a marina cafe"></video>
+        <button class="vid-btn" id="zvb" type="button">Play video</button>
+      </div>
+      <div class="wind">
+        <div class="scale" role="img" aria-label="Wind speed scale from 0 to 160 kilometres per hour, marked at 140"><span class="fill" style="width:87.5%"></span><i class="mark" style="left:87.5%"></i></div>
+        <ul class="ticks" aria-hidden="true"><li>0</li><li>40</li><li>80</li><li>120</li><li>160 km/h</li></ul>
+        <figcaption>In a controlled testing environment, Zipscreen withstood a windspeed of 140 km/h.</figcaption>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section id="range" class="sec">
+  <div class="wrap">
+    <div class="head">
+      <h2>Awnings, blinds, shutters and curtains</h2>
+      <p class="lead">Exterior shade for entertaining areas and upper storeys, and interior products for privacy, light control and style in every room. Select a product to see it.</p>
+    </div>
+    <div class="range-grid">
+      <div class="preview" id="preview">
+        <figure><img id="rv-img" src="img/Zipscreen-hero-1500_700.jpg" alt="" width="600" height="400"></figure>
+        <h3 id="rv-name"></h3>
+        <p id="rv-desc"></p>
+        <div class="cta-row">
+          <a class="btn btn-primary ask" id="rv-ask" href="#quote" data-product="">Ask about this</a>
+          <button class="btn btn-line" id="rv-zoom" type="button">View larger</button>
+        </div>
+      </div>
+      <div class="index" id="index">
+        <div class="group" id="g-ext"><h3>Exterior</h3><ul class="rows" id="rows-ext"></ul></div>
+        <div class="group" id="g-int"><h3>Interior</h3><ul class="rows" id="rows-int"></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <h2>Starting prices<span class="tag">Demo figures</span></h2>
+      <p class="lead">A rough idea of cost helps you plan. Every window is measured and quoted individually, so your quote will differ.</p>
+    </div>
+    <div class="price-wrap">
+      <table class="price">
+        <caption>Example starting prices per window, supplied and installed. These numbers are placeholders for the demo. Selbys supplies the real figures before launch.</caption>
+        <tbody>
+          <tr><th scope="row">Aluminium venetians</th><td><b>$140</b><small>from, per window</small></td></tr>
+          <tr><th scope="row">Roller blinds</th><td><b>$190</b><small>from, per window</small></td></tr>
+          <tr><th scope="row">Timber venetians</th><td><b>$260</b><small>from, per window</small></td></tr>
+          <tr><th scope="row">Vertical blinds</th><td><b>$260</b><small>from, per window</small></td></tr>
+          <tr><th scope="row">Roman blinds</th><td><b>$340</b><small>from, per window</small></td></tr>
+          <tr><th scope="row">Curtains and drapes</th><td><b>$380</b><small>from, per window</small></td></tr>
+          <tr><th scope="row">Panel glides</th><td><b>$420</b><small>from, per window</small></td></tr>
+          <tr><th scope="row">Plantation shutters</th><td><b>$520</b><small>from, per window</small></td></tr>
+          <tr><th scope="row">Auto awnings</th><td><b>$780</b><small>from, per awning</small></td></tr>
+          <tr><th scope="row">Zipscreen exterior blinds</th><td><b>$950</b><small>from, per blind</small></td></tr>
+          <tr><th scope="row">Motorisation</th><td><b>+$240</b><small>from, per blind</small></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="price-cta">
+      <a class="btn btn-primary" href="#quote">Book a measure and quote</a>
+      <p>Tell us the room and the number of windows and we will confirm a price after measuring.</p>
+    </div>
+  </div>
+</section>
+
+<section id="automation" class="auto">
+  <img src="img/Automate-slide.jpg" alt="" width="1500" height="600" loading="lazy">
+  <div class="wrap">
+    <div class="copy">
+      <h2>Automation</h2>
+      <p>Selbys Blinds provides a range of automation options for interior and exterior products that can also integrate with home automation systems.</p>
+      <a class="btn btn-primary ask" data-product="Automation" href="#quote" style="justify-self:start">Ask about automation</a>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="sec">
+  <div class="wrap">
+    <div class="head">
+      <h2>Our work</h2>
+      <p class="lead">Exterior screens, curtains, rollers and automation, installed in homes and commercial spaces.</p>
+    </div>
+    <div class="mosaic">
+      <figure class="m1"><img src="img/Commercial-1500_700.jpg" alt="Commercial Zipscreen blinds on a marina side cafe" width="1500" height="700" loading="lazy"><figcaption><b>Commercial</b>Zipscreen blinds</figcaption></figure>
+      <figure class="m2"><img src="img/hd/SL2-1500_700.jpg" alt="Zipscreen blinds on an outdoor dining area among trees" width="1500" height="699" loading="lazy"><figcaption><b>Outdoor dining</b>Zipscreen blinds</figcaption></figure>
+      <figure class="m3"><img src="img/hd/SL3-1500_700.jpg" alt="Patterned curtains in a bright living space" width="1500" height="700" loading="lazy"><figcaption><b>Curtains</b>and drapes</figcaption></figure>
+      <figure class="m4"><img src="img/Automate-slide.jpg" alt="Automated screens in a modern open plan home" width="1500" height="600" loading="lazy"><figcaption><b>Automation</b>interior and exterior</figcaption></figure>
+      <figure class="m5"><img src="img/hd/parallax-1030x549.jpg" alt="Row of roller blinds in a lounge with city views" width="1500" height="800" loading="lazy"><figcaption><b>Roller blinds</b>privacy and comfort</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="why sec">
+  <div class="wrap">
+    <div class="head"><h2>A few reasons why so many people choose Selbys</h2></div>
+    <div class="three">
+      <div><h3>Extensive range of products</h3><p>We believe in giving our customers choice, so we offer a huge range of interior and exterior window furnishings. You get the product that best suits your project.</p></div>
+      <div><h3>Proudly Australian made</h3><p>We manufacture our products in our own factory on the beautiful Mornington Peninsula, so we can custom design and build to size for your specific requirements.</p></div>
+      <div><h3>Personalised service</h3><p>We enjoy delivering a friendly, personal experience. We take the time to carefully measure and quote each project so we get it right the first time.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="sec">
+  <div class="wrap">
+    <div class="head"><h2>How a Selbys project runs</h2><p class="lead">The same people who make your blinds also measure, quote and install them.</p></div>
+    <ol class="steps">
+      <li><h3>Measure</h3><p>We carefully measure each window and space so the product fits first time.</p></li>
+      <li><h3>Quote</h3><p>You receive a quote for your project, whether it is domestic or commercial, small or large.</p></li>
+      <li><h3>Make</h3><p>Your order is custom designed and built to size in our own factory.</p></li>
+      <li><h3>Install</h3><p>Selbys installs what it makes, from a single blind to a whole project.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="included" class="why sec">
+  <div class="wrap">
+    <div class="head"><h2>Included with every project</h2><p class="lead">What happens after you get in touch, from the first measure to the last fitting.</p></div>
+    <ul class="incl">
+      <li><h3>Measure and quote</h3><p>We carefully measure each window and space so the product fits first time, then quote your project.</p></li>
+      <li><h3>Made to size</h3><p>Your order is custom designed and built to size in our own factory in Langwarrin.</p></li>
+      <li><h3>Installed by Selbys</h3><p>Selbys installs what it makes, from a single blind to a whole project.</p></li>
+      <li><h3>Child safe options</h3><p>Ask us about cordless and motorised operation for homes with young children.</p></li>
+      <li><h3>Warranty and aftercare<span class="tag">To confirm</span></h3><p>Warranty terms and aftercare details to be supplied by Selbys before launch.</p></li>
+      <li><h3>Domestic and commercial</h3><p>Homes, cafes, offices and larger projects, small or large.</p></li>
+    </ul>
+  </div>
+</section>
+
+<div class="marquee mq2" role="region" aria-label="What Selbys offers">
+  <div class="mq-track">
+    <ul class="mq-group"><li><img src="img/mq/par.jpg" alt="" width="288" height="192"><span>Measure and quote</span></li><li><img src="img/mq/panel.jpg" alt="" width="288" height="192"><span>Made to size in Langwarrin</span></li><li><img src="img/mq/zip.jpg" alt="" width="288" height="192"><span>Installed by Selbys</span></li><li><img src="img/mq/aslide.jpg" alt="" width="288" height="192"><span>Cordless and motorised options</span></li><li><img src="img/mq/comm.jpg" alt="" width="288" height="192"><span>Domestic and commercial</span></li><li><img src="img/mq/sl2.jpg" alt="" width="288" height="192"><span>Melbourne and the Mornington Peninsula</span></li></ul>
+    <ul class="mq-group" aria-hidden="true"><li><img src="img/mq/par.jpg" alt="" width="288" height="192"><span>Measure and quote</span></li><li><img src="img/mq/panel.jpg" alt="" width="288" height="192"><span>Made to size in Langwarrin</span></li><li><img src="img/mq/zip.jpg" alt="" width="288" height="192"><span>Installed by Selbys</span></li><li><img src="img/mq/aslide.jpg" alt="" width="288" height="192"><span>Cordless and motorised options</span></li><li><img src="img/mq/comm.jpg" alt="" width="288" height="192"><span>Domestic and commercial</span></li><li><img src="img/mq/sl2.jpg" alt="" width="288" height="192"><span>Melbourne and the Mornington Peninsula</span></li></ul>
+  </div>
+</div>
+
+<section class="suppliers" aria-labelledby="sup-h">
+  <div class="wrap">
+    <h2 id="sup-h">Our suppliers</h2>
+    <div class="logos">
+      <img src="img/supplier-logo-1-1.png" alt="Nolan Group" width="239" height="150" loading="lazy">
+      <img src="img/supplier-logo-2-1.png" alt="Rollease Acmeda" width="683" height="150" loading="lazy">
+      <img src="img/supplier-logo-3-1.png" alt="Texstyle" width="710" height="150" loading="lazy">
+      <img src="img/supplier-logo-7-1.png" alt="Four Families" width="338" height="150" loading="lazy">
+      <img class="long" src="img/supplier-logo-4-1500x141-1.png" alt="Louvolite" width="1500" height="141" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="area" class="area ink sec">
+  <div class="wrap">
+    <div class="left">
+      <h2>Where we work</h2>
+      <p>Selbys measures, quotes and installs across Melbourne and the Mornington Peninsula, from our factory in Langwarrin. Our usual service radius is about 60 km from the factory.<span class="tag" style="margin-left:10px">Radius to confirm</span></p>
+      <form id="pcform" class="pc" novalidate style="background:none;padding:0;grid-template-columns:none">
+        <label for="pc-in">Check your postcode<input id="pc-in" inputmode="numeric" maxlength="4" autocomplete="postal-code" placeholder="3910"></label>
+        <button class="btn btn-primary" type="submit">Check</button>
+      </form>
+      <p class="pc-out" id="pc-out" role="status"></p>
+    </div>
+    <div class="right">
+      <ul class="subs" aria-label="Suburbs we work in">
+        <li>Langwarrin</li><li>Frankston</li><li>Carrum Downs</li><li>Seaford</li><li>Mornington</li><li>Mount Eliza</li><li>Mount Martha</li><li>Hastings</li><li>Somerville</li><li>Rye</li><li>Sorrento</li><li>Cranbourne</li><li>Berwick</li><li>Dandenong</li><li>Bayside</li><li>Melbourne south east</li>
+      </ul>
+      <address class="addr">Selbys Blinds factory<br>Factory 3/389 McClelland Drive, Langwarrin VIC 3910<br><a href="tel:0397755777">03 9775 5777</a> or <a href="tel:1800758596">1800 75 85 96</a><br><a href="https://www.google.com/maps/search/?api=1&query=Factory+3%2F389+McClelland+Drive+Langwarrin+VIC+3910" target="_blank" rel="noopener">Open the factory in Google Maps</a></address>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Selbys Blinds","description":"Melbourne based manufacturer, distributor and installer of Australian made interior and exterior window furnishings since 1979.","telephone":"+61397755777","address":{"@type":"PostalAddress","streetAddress":"Factory 3/389 McClelland Drive","addressLocality":"Langwarrin","addressRegion":"VIC","postalCode":"3910","addressCountry":"AU"},"areaServed":["Melbourne","Mornington Peninsula","Frankston","Cranbourne","Berwick","Dandenong"],"foundingDate":"1979"}</script>
+
+<section id="quote" class="quote ink sec">
+  <div class="wrap">
+    <div class="left">
+      <h2>Book a measure and quote</h2>
+      <p>Tell us what you are after and we will arrange a time to measure and quote your project. You can also call us directly.</p>
+      <dl class="contact">
+        <div><dt>Call</dt><dd>03 9775 5777</dd><button class="copy-btn" data-copy="03 9775 5777" type="button">Copy</button></div>
+        <div><dt>Call (toll free)</dt><dd>1800 75 85 96</dd><button class="copy-btn" data-copy="1800 75 85 96" type="button">Copy</button></div>
+        <div><dt>Email</dt><dd>hello@selbysblinds.com.au</dd><button class="copy-btn" data-copy="hello@selbysblinds.com.au" type="button">Copy</button></div>
+        <div><dt>Factory</dt><dd>Factory 3/389 McClelland Drive, Langwarrin, VIC 3910</dd><button class="copy-btn" data-copy="Factory 3/389 McClelland Drive, Langwarrin, VIC 3910" type="button">Copy</button></div>
+      </dl>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Factory+3%2F389+McClelland+Drive+Langwarrin+VIC+3910" target="_blank" rel="noopener">Open the factory in Google Maps</a>
+    </div>
+
+    <form id="qform" novalidate>
+      <div class="two">
+        <label for="f-name">Your name<input id="f-name" name="name" autocomplete="name" required><span class="err" id="e-name"></span></label>
+        <label for="f-phone">Your phone<input id="f-phone" name="phone" type="tel" autocomplete="tel" required><span class="err" id="e-phone"></span></label>
+      </div>
+      <div class="two">
+        <label for="f-email">Your email<input id="f-email" name="email" type="email" autocomplete="email" required><span class="err" id="e-email"></span></label>
+        <label for="f-post">Your postcode<input id="f-post" name="postcode" inputmode="numeric" autocomplete="postal-code" maxlength="4" required><span class="err" id="e-post"></span></label>
+      </div>
+      <label for="f-prod">What are you interested in?
+        <select id="f-prod" name="product">
+          <option value="">Not sure yet</option>
+          <optgroup label="Exterior">
+            <option>Zipscreen exterior blinds</option><option>Auto awnings</option><option>Fixed guide awnings</option><option>Straight drop crank awnings</option>
+          </optgroup>
+          <optgroup label="Interior">
+            <option>Roller screens / blinds</option><option>Panel glides</option><option>Vertical blinds</option><option>Roman blinds</option><option>Curtains and drapes</option><option>Timber venetians</option><option>Aluminium venetians</option><option>Plantation shutters</option><option>Honeycomb blinds</option>
+          </optgroup>
+          <optgroup label="Other"><option>Automation</option></optgroup>
+        </select>
+      </label>
+      <label for="f-when">Best time for a visit
+        <select id="f-when" name="when">
+          <option value="">Any time</option><option>Weekday morning</option><option>Weekday afternoon</option><option>Saturday morning</option>
+        </select>
+      </label>
+      <label for="f-msg">Your message<textarea id="f-msg" name="message" required></textarea><span class="err" id="e-msg"></span></label>
+      <button class="btn btn-primary" type="submit">Request my measure</button>
+      <div class="done" id="done" role="status" tabindex="-1"><b>Demo only.</b> This enquiry was not sent. On the live site it goes to hello@selbysblinds.com.au, and the "prove you are human" sum is replaced by a hidden spam check.</div>
+      <p class="fine">We use your details only to reply to your enquiry.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p class="brandline">Selbys Blinds</p>
+      <p>Melbourne based manufacturer, distributor and installer of Australian made interior and exterior window furnishings since 1979.</p>
+    </div>
+    <div>
+      <h3>Exterior</h3>
+      <ul><li><a href="#exterior">Track guided Zipscreen blinds</a></li><li><a href="#range">Auto awnings</a></li><li><a href="#range">Fixed guide awnings</a></li><li><a href="#range">Drop crank awnings</a></li></ul>
+    </div>
+    <div>
+      <h3>Interior</h3>
+      <ul><li><a href="#range">Honeycomb blinds</a></li><li><a href="#range">Roller screens / blinds</a></li><li><a href="#range">Norman plantation shutters</a></li><li><a href="#range">Panel glides</a></li><li><a href="#range">Vertical and Roman blinds</a></li><li><a href="#range">Curtains, timber and aluminium venetians</a></li></ul>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <ul><li>03 9775 5777</li><li>1800 75 85 96</li><li>hello@selbysblinds.com.au</li><li>3/389 McClelland Drive, Langwarrin VIC 3910</li></ul>
+    </div>
+    <div class="legal"><span>&copy; 2026 Selbys Blinds</span><span>Demo concept prepared by easywebsolns</span></div>
+  </div>
+  <div class="bigmark" aria-hidden="true">Selbys</div>
+</footer>
+
+<div class="dock" role="group" aria-label="Colour theme"><span>Colours</span><button type="button" data-p="harbour" style="--a:#C79B4B;--b:#0F2B34" title="Harbour" aria-label="Harbour" aria-pressed="true"></button><button type="button" data-p="graphite" style="--a:#CC6B3E;--b:#1D2024" title="Graphite and copper" aria-label="Graphite and copper" aria-pressed="false"></button><button type="button" data-p="eucalypt" style="--a:#B9CC6E;--b:#14301F" title="Eucalypt" aria-label="Eucalypt" aria-pressed="false"></button><button type="button" data-p="mulberry" style="--a:#E0965F;--b:#2A1530" title="Mulberry" aria-label="Mulberry" aria-pressed="false"></button><button type="button" data-p="navy" style="--a:#E3B23C;--b:#0F1E3D" title="Navy and gold" aria-label="Navy and gold" aria-pressed="false"></button></div>
+<dialog id="lb" aria-label="Product photo">
+  <div class="lb-in">
+    <button class="lb-x" id="lb-x" type="button" aria-label="Close photo">&times;</button>
+    <div class="lb-view" id="lb-view"><img id="lb-img" src="" alt=""></div>
+    <div class="lb-bar"><b id="lb-name"></b><span class="lb-hint">Click the photo to zoom in and out.</span><a class="ask" id="lb-ask" href="#quote" data-product="">Ask about this</a><button type="button" id="lb-close">Close</button></div>
+  </div>
+</dialog>
+<div class="callbar"><a href="tel:0397755777">Call 03 9775 5777</a><a href="#quote">Book a measure</a></div>
+
+<script>
+(function(){
+  var $=function(i){return document.getElementById(i);};
+  function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!==undefined)e.textContent=x;return e;}
+
+  /* mobile menu */
+  var nav=$('nav'), mb=$('menuBtn');
+  mb.addEventListener('click',function(){var o=nav.classList.toggle('open');mb.setAttribute('aria-expanded',o);mb.textContent=o?'Close':'Menu';});
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');mb.setAttribute('aria-expanded','false');mb.textContent='Menu';}});
+
+  /* ask about a product: pre-fills the enquiry form */
+  var prod=$('f-prod');
+  function pick(v){for(var i=0;i<prod.options.length;i++){if(prod.options[i].text===v){prod.selectedIndex=i;return;}}}
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('.ask[data-product]');if(a)pick(a.getAttribute('data-product'));});
+
+  /* copy buttons */
+  document.querySelectorAll('.copy-btn').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=b.getAttribute('data-copy'), old=b.textContent;
+      function ok(){b.textContent='Copied';setTimeout(function(){b.textContent=old;},1400);}
+      function fallback(){
+        var dd=b.previousElementSibling;
+        try{var r=document.createRange();r.selectNodeContents(dd);var s=getSelection();s.removeAllRanges();s.addRange(r);}catch(_){}
+        b.textContent='Selected';setTimeout(function(){b.textContent=old;},1400);
+      }
+      try{navigator.clipboard.writeText(t).then(ok,fallback);}catch(_){fallback();}
+    });
+  });
+
+  /* enquiry form (demo only) */
+  var f=$('qform'), done=$('done');
+  function setErr(id,msg){$(id).textContent=msg;}
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=$('f-name').value.trim(), p=$('f-phone').value.trim(), em=$('f-email').value.trim(), pc=$('f-post').value.trim(), m=$('f-msg').value.trim(), bad=null;
+    var okP=/^[0-9 +()\-]{8,}$/.test(p), okE=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em), okC=/^\d{4}$/.test(pc);
+    setErr('e-name',n?'':'Enter your name.'); if(!n)bad=bad||$('f-name');
+    setErr('e-phone',okP?'':'Enter a phone number we can call.'); if(!okP)bad=bad||$('f-phone');
+    setErr('e-email',okE?'':'Enter a valid email address, like name@example.com.'); if(!okE)bad=bad||$('f-email');
+    setErr('e-post',okC?'':'Enter your 4 digit postcode.'); if(!okC)bad=bad||$('f-post');
+    setErr('e-msg',m?'':'Tell us a little about your project.'); if(!m)bad=bad||$('f-msg');
+    if(bad){done.classList.remove('show');bad.focus();return;}
+    done.classList.add('show');done.focus();
+  });
+
+  /* product data, from the Selbys site copy */
+  var P={
+    zip:{n:'Zipscreen exterior blinds',d:'A high quality track guided blind system for pergolas, verandas and balconies. Made by Selbys right here in Australia.',img:'img/Zipscreen-hero-1500_700.jpg',hd:'img/Zipscreen-hero-1500_700.jpg',alt:'Zipscreen blinds around a pool area',ask:'Zipscreen exterior blinds',s:'Pergolas, verandas, balconies'},
+    auto:{n:'Auto awnings',d:"The most popular of Selbys' exterior window shade solutions. A timeless shading option that won't break the budget.",img:'img/Auto-Awnings-600.jpg',hd:'img/hd/Auto-Awnings-600.jpg',alt:"Dark auto awning drawn down over a brick home's window",ask:'Auto awnings',s:'Exterior window shade'},
+    fixed:{n:'Fixed guide awnings',d:'Operate on guide bars and are a perfect option for second storey applications.',img:'img/fixed-guide-awnings.jpg',hd:'img/hd/fixed-guide-awnings.jpg',alt:'Grey fixed guide awning against a brick wall',ask:'Fixed guide awnings',s:'Second storeys'},
+    drop:{n:'Drop crank awnings',d:'Straight drop crank handle awnings are a popular choice for entertaining areas, offering protection from the elements.',img:'img/drop-crank.jpg',hd:'img/hd/drop-crank.jpg',alt:'Straight drop crank awning beside a rose garden',ask:'Straight drop crank awnings',s:'Entertaining areas'},
+    roller:{n:'Roller blinds',d:'Great privacy and comfort. A popular choice for bathrooms, kitchens, living rooms, studies and rumpus rooms.',img:'img/roller-blinds-600.jpg',hd:'img/hd/roller-blinds-600.jpg',alt:'Orange roller blinds over a living room window wall',ask:'Roller screens / blinds',s:'Privacy and comfort'},
+    panel:{n:'Panel glides',d:'A contemporary look with shade and privacy for large windows. The panels stack neatly when the blind is drawn.',img:'img/Panel-glides-600.jpg',hd:'img/hd/Panel-glides-600.jpg',alt:'Green panel glides across large living room windows',ask:'Panel glides',s:'Large windows'},
+    vert:{n:'Vertical blinds',d:'An elegant and versatile option for any room, and a great choice for expansive or hard to cover spaces.',img:'img/VERTICAL-BLINDS-600.jpg',hd:'img/hd/VERTICAL-BLINDS-600.jpg',alt:'Teal vertical blinds behind a grey sofa',ask:'Vertical blinds',s:'Hard to cover spaces'},
+    roman:{n:'Roman blinds',d:'One of the most luxurious options in the Selbys range. A perfect way to bring a touch of class to your home or living space.',img:'img/roman-1.jpg',hd:'img/hd/roman-1.jpg',alt:'Roman blind in a blue and white ikat pattern',ask:'Roman blinds',s:'A touch of class'},
+    curt:{n:'Curtains and drapes',d:"There is a huge range of curtains and drapes available, so let's discuss the best option to suit your specific needs.",img:'img/Curtains-1.jpg',hd:'img/hd/Curtains-1.jpg',alt:'Sheer curtains in a lounge and dining room',ask:'Curtains and drapes',s:'Made to suit'},
+    timber:{n:'Timber venetians',d:'One of the most elegant and visually distinctive window blind styles, with a sophisticated yet relaxed vibe.',img:'img/TIMBER-VENETIAN-600.jpg',hd:'img/hd/TIMBER-VENETIAN-600.jpg',alt:'White timber venetians on bedroom windows',ask:'Timber venetians',s:'Elegant and relaxed'},
+    alu:{n:'Aluminium venetians',d:'Simple and stylish, with a timeless look that suits a range of decorating and interior design styles.',img:'img/ALLUMINUM-VENETIAN-1-1.jpg',hd:'img/hd/ALLUMINUM-VENETIAN-1-1.jpg',alt:'Hand tilting the slats of an aluminium venetian blind',ask:'Aluminium venetians',s:'Simple and stylish'},
+    plant:{n:'Plantation shutters',d:'An elegant and sophisticated look, available in a range of finishes including timber and painted options.',img:'img/plantation-shutters-2-1.jpg',hd:'img/hd/plantation-shutters-2-1.jpg',alt:'White plantation shutters on a sliding door to a garden',ask:'Plantation shutters',s:'Timber and painted'},
+    honey:{n:'Honeycomb blinds',d:'Part of the Selbys interior range. Ask us about honeycomb blinds when you request a quote.',swatch:'cells',ask:'Honeycomb blinds',s:'Interior range'},
+    motor:{n:'Automation',d:'A range of automation options for interior and exterior products that can also integrate with home automation systems.',img:'img/hd/automate-600.jpg',alt:'Open plan living room with automated screens along the windows',ask:'Automation'},
+    van:{n:'Measure, quote, make and install',d:'We carefully measure and quote each project, build it to size in our own Mornington Peninsula factory, and install it ourselves.',swatch:'steps',ask:'Not sure yet'}
+  };
+
+  /* photo viewer with zoom */
+  var lb=$('lb'), lbImg=$('lb-img'), lbName=$('lb-name'), lbAsk=$('lb-ask'), lbView=$('lb-view');
+  function openLb(src,alt,name,ask){
+    lbView.classList.remove('z'); lbImg.src=src; lbImg.alt=alt; lbName.textContent=name; lbAsk.setAttribute('data-product',ask||'');
+    lbAsk.style.display=ask?'':'none';
+    if(lb.showModal){lb.showModal();}else{lb.setAttribute('open','');}
+  }
+  function lbShut(){if(lb.close){lb.close();}else{lb.removeAttribute('open');}}
+  lbView.addEventListener('click',function(e){
+    var r=lbView.getBoundingClientRect();
+    lbView.style.setProperty('--ox',((e.clientX-r.left)/r.width*100)+'%'); lbView.style.setProperty('--oy',((e.clientY-r.top)/r.height*100)+'%');
+    lbView.classList.toggle('z');
+  });
+  lbView.addEventListener('mousemove',function(e){
+    if(!lbView.classList.contains('z'))return;
+    var r=lbView.getBoundingClientRect();
+    lbView.style.setProperty('--ox',((e.clientX-r.left)/r.width*100)+'%'); lbView.style.setProperty('--oy',((e.clientY-r.top)/r.height*100)+'%');
+  });
+  $('lb-x').addEventListener('click',lbShut); $('lb-close').addEventListener('click',lbShut);
+  lb.addEventListener('click',function(e){if(e.target===lb)lbShut();});
+  lbAsk.addEventListener('click',lbShut);
+  function openProd(k){var p=P[k]; openLb(p.hd||p.img,p.alt,p.n,p.ask);}
+
+  /* the range: an index with a large preview */
+  var rvImg=$('rv-img'), rvName=$('rv-name'), rvDesc=$('rv-desc'), rvAsk=$('rv-ask'), rvK='zip', rowBtns=[];
+  var EXT=['zip','auto','fixed','drop'], INT=['roller','panel','vert','roman','curt','timber','alu','plant','honey'];
+  function rv(k,scroll){
+    var p=P[k]; rvK=k;
+    rvName.textContent=p.n; rvDesc.textContent=p.d; rvAsk.setAttribute('data-product',p.ask);
+    var z=$('rv-zoom'); z.style.display=p.img?'':'none';
+    if(p.img){rvImg.parentNode.style.display='';rvImg.src=p.img; rvImg.alt=p.alt;}else{rvImg.parentNode.style.display='none';}
+    rowBtns.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-k')===k);});
+    if(scroll&&window.matchMedia('(max-width:919px)').matches){$('preview').scrollIntoView({block:'nearest',behavior:'smooth'});}
+  }
+  function rows(list,ul){
+    list.forEach(function(k){
+      var li=el('li'), b=el('button','row'), n=el('span','',P[k].n), s=el('small','',P[k].s);
+      b.type='button'; b.setAttribute('data-k',k); b.setAttribute('aria-pressed','false'); b.appendChild(n); b.appendChild(s); li.appendChild(b); ul.appendChild(li); rowBtns.push(b);
+      b.addEventListener('click',function(){rv(k,true);});
+      b.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')rv(k,false);});
+      b.addEventListener('focus',function(){rv(k,false);});
+    });
+  }
+  rows(EXT,$('rows-ext')); rows(INT,$('rows-int')); rv('zip',false);
+  $('rv-zoom').addEventListener('click',function(){openProd(rvK);});
+
+  /* the house tour: real photos of Selbys installations. Marker positions are % of the original photo and only sit on products visible in it. */
+  var SC=[
+    {t:'Home exterior',img:'img/Zipscreen-hero-1500_700.jpg',w:1500,h:700,alt:'White modern home beside a pool with large dark Zipscreen blinds across the openings',hot:[['zip',79,42],['zip',48.7,46]]},
+    {t:'Patio and verandah',img:'img/hd/SL2-1500_700.jpg',w:1500,h:699,alt:'Outdoor lounge and dining area enclosed with dark mesh Zipscreen blinds',hot:[['zip',50,45]]},
+    {t:'Cafe and commercial',img:'img/Commercial-1500_700.jpg',w:1500,h:700,alt:'Marina side cafe with Zipscreen blinds over the glass balustrade',hot:[['zip',49,28],['zip',80,30]]},
+    {t:'Open plan living',img:'img/Automate-slide.jpg',w:1500,h:600,alt:'Bright open plan living room with grey roller screens along a wall of glass',hot:[['roller',80,38],['motor',86,62]]},
+    {t:'Lounge',img:'img/hd/parallax-1030x549.jpg',w:1500,h:800,alt:'Lounge with cream roller blinds across a wall of windows',hot:[['roller',35,40],['roller',72,38]]},
+    {t:'Bedroom and curtains',img:'img/hd/SL3-1500_700.jpg',w:1500,h:700,alt:'Red and white patterned curtain beside cushions and a vase of flowers',hot:[['curt',75,42]]}
+  ];
+  var pImg=$('p-img'), pCells=$('p-cells'), pSteps=$('p-steps'), pName=$('p-name'), pDesc=$('p-desc'), pAsk=$('p-ask'),
+      sImg=$('scene-img'), hotsBox=$('hots'), sceneList=$('scenes'), photo=$('photo'), sceneBtns=[], cur='zip', curS=SC[0];
+  function mark(){hotsBox.querySelectorAll('.hot').forEach(function(h){var on=h.getAttribute('data-k')===cur;h.classList.toggle('on',on);h.setAttribute('aria-pressed',on);});}
+  function show(k){
+    var p=P[k]; if(!p)return; cur=k;
+    pName.textContent=p.n; pDesc.textContent=p.d; pAsk.setAttribute('data-product',p.ask);
+    pCells.style.display=p.swatch==='cells'?'flex':'none'; pSteps.style.display=p.swatch==='steps'?'flex':'none';
+    if(p.img){pImg.style.display='block';pImg.src=p.hd||p.img;pImg.alt=p.alt;}else{pImg.style.display='none';}
+    mark();
+  }
+  function place(){
+    var W=photo.clientWidth, H=photo.clientHeight; if(!W||!H)return;
+    var s=curS, r=s.w/s.h, R=W/H, sx=1, sy=1, ox=0, oy=0;
+    if(r>R){sx=r/R;ox=(1-sx)/2;} else {sy=R/r;oy=(1-sy)/2;}   /* object-fit:cover, centred */
+    hotsBox.querySelectorAll('.hot').forEach(function(b){
+      b.style.left=(ox*100+(+b.getAttribute('data-x'))*sx)+'%'; b.style.top=(oy*100+(+b.getAttribute('data-y'))*sy)+'%';
+    });
+  }
+  function scene(i){
+    var s=SC[i]; curS=s;
+    photo.style.setProperty('--ar',s.w+' / '+s.h);
+    sImg.src=s.img; sImg.alt=s.alt; sImg.width=s.w; sImg.height=s.h;
+    sceneBtns.forEach(function(b,j){b.classList.toggle('on',j===i);b.setAttribute('aria-pressed',j===i);});
+    hotsBox.textContent='';
+    s.hot.forEach(function(h){
+      var b=el('button','hot'), sp=el('span','',P[h[0]].n);
+      b.type='button'; b.setAttribute('data-k',h[0]); b.setAttribute('data-x',h[1]); b.setAttribute('data-y',h[2]);
+      b.setAttribute('aria-label',P[h[0]].n); b.setAttribute('aria-pressed','false');
+      if(h[1]>70)b.classList.add('r');
+      b.appendChild(sp); hotsBox.appendChild(b);
+      b.addEventListener('click',function(){show(h[0]);});
+      b.addEventListener('focus',function(){show(h[0]);});
+      b.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')show(h[0]);});
+    });
+    place(); mark();
+  }
+  SC.forEach(function(s,i){
+    var li=el('li'), b=el('button','scene-b',s.t);
+    b.type='button'; b.setAttribute('aria-pressed','false'); li.appendChild(b); sceneList.appendChild(li); sceneBtns.push(b);
+    b.addEventListener('click',function(){scene(i);show(SC[i].hot[0][0]);});
+  });
+  scene(0); show('zip');
+  window.addEventListener('resize',place);
+
+  /* hero slideshow: the blind closes, the photo changes, the blind opens */
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var HS=[
+    {t:'Zipscreen blinds, poolside home',c:'Exterior blinds that enclose an alfresco area.',img:'img/Zipscreen-hero-1500_700.jpg',alt:'Zipscreen exterior blinds enclosing a poolside alfresco area'},
+    {t:'Patio and verandah',c:'Zipscreen blinds turn an outdoor room into a year round space.',img:'img/hd/SL2-1500_700.jpg',alt:'Outdoor lounge and dining area enclosed with dark mesh Zipscreen blinds'},
+    {t:'Cafe and commercial',c:'Zipscreen blinds along a marina side cafe.',img:'img/Commercial-1500_700.jpg',alt:'Marina side cafe with Zipscreen blinds over the glass balustrade'},
+    {t:'Open plan living',c:'Roller screens along a wall of glass, ready for automation.',img:'img/Automate-slide.jpg',alt:'Bright open plan living room with grey roller screens along a wall of glass'},
+    {t:'Lounge',c:'Roller blinds across a window wall.',img:'img/hd/parallax-1030x549.jpg',alt:'Lounge with cream roller blinds across a wall of windows'},
+    {t:'Bedroom and curtains',c:'Patterned curtains and drapes made to suit.',img:'img/hd/SL3-1500_700.jpg',alt:'Red and white patterned curtain beside cushions and a vase of flowers'}
+  ];
+  var show=$('show'), slidesBox=$('slides'), slatEls=[].slice.call(show.querySelectorAll('.slats i')), dotsBox=$('sh-dots'), shT=$('sh-t'), shC=$('sh-c'), playBtn=$('sh-play');
+  var shIdx=0, shBusy=false, shPlay=!reduce, shHover=false, shTimer=null, slideEls=[slidesBox.firstElementChild], dotEls=[];
+  HS.forEach(function(h,i){
+    if(i>0){var f=el('figure','slide'), im=el('img'); im.src=h.img; im.alt=h.alt; im.width=1500; im.height=700; im.loading='lazy'; f.appendChild(im); slidesBox.appendChild(f); slideEls.push(f);}
+    var d=el('button'); d.type='button'; d.setAttribute('aria-label','Show photo '+(i+1)+': '+h.t); d.setAttribute('aria-current',i===0); dotsBox.appendChild(d); dotEls.push(d);
+    d.addEventListener('click',function(){goTo(i,true);});
+  });
+  function swap(n){
+    slideEls[shIdx].classList.remove('on'); slideEls[n].classList.add('on');
+    dotEls[shIdx].setAttribute('aria-current','false'); dotEls[n].setAttribute('aria-current','true');
+    shT.textContent=HS[n].t; shC.textContent=HS[n].c; shIdx=n;
+  }
+  function goTo(n,manual){
+    n=(n+HS.length)%HS.length; if(shBusy||n===shIdx)return;
+    if(manual)queue();
+    if(reduce||!slatEls[0].animate){swap(n);return;}
+    shBusy=true;
+    Promise.all(slatEls.map(function(s,i){return s.animate([{transform:'scaleY(0)'},{transform:'scaleY(1)'}],{duration:320,delay:i*22,fill:'forwards',easing:'ease-in'}).finished;}))
+    .then(function(){swap(n);return Promise.all(slatEls.map(function(s,i){return s.animate([{transform:'scaleY(1)'},{transform:'scaleY(0)'}],{duration:600,delay:i*30,fill:'forwards',easing:'cubic-bezier(.6,0,.2,1)'}).finished;}));})
+    .then(function(){slatEls.forEach(function(s){s.getAnimations().forEach(function(a){a.cancel();});});shBusy=false;})
+    .catch(function(){shBusy=false;});
+  }
+  function queue(){clearInterval(shTimer);if(shPlay)shTimer=setInterval(function(){if(!shHover&&!document.hidden)goTo(shIdx+1);},6500);}
+  $('sh-prev').addEventListener('click',function(){goTo(shIdx-1,true);});
+  $('sh-next').addEventListener('click',function(){goTo(shIdx+1,true);});
+  function setPlay(on){shPlay=on;playBtn.textContent=on?'Pause':'Play';playBtn.setAttribute('aria-pressed',!on);queue();}
+  playBtn.addEventListener('click',function(){setPlay(!shPlay);});
+  show.addEventListener('mouseenter',function(){shHover=true;}); show.addEventListener('mouseleave',function(){shHover=false;});
+  setPlay(shPlay);
+
+  /* find your fit: recommendations by room and goal */
+  var T={
+    zip:{r:['alfresco','large'],g:['heat','privacy','outdoor']},
+    auto:{r:['alfresco','living','bed','office'],g:['heat','outdoor']},
+    fixed:{r:['bed','living'],g:['heat','outdoor']},
+    drop:{r:['alfresco'],g:['heat','outdoor']},
+    roller:{r:['bed','living','office','kitchen'],g:['dark','heat','privacy','motor']},
+    panel:{r:['living','large','office'],g:['heat','privacy','motor']},
+    vert:{r:['living','large','office'],g:['heat','privacy','motor']},
+    roman:{r:['bed','living'],g:['dark','style','privacy']},
+    curt:{r:['bed','living'],g:['dark','style','privacy']},
+    timber:{r:['bed','living','office'],g:['heat','style','privacy']},
+    alu:{r:['office','kitchen','bed'],g:['heat','privacy']},
+    plant:{r:['living','bed','large','kitchen'],g:['style','privacy','heat']},
+    honey:{r:['bed','living','office'],g:['dark','heat','privacy']},
+    motor:{r:['bed','living','office','kitchen','alfresco','large'],g:['motor']}
+  };
+  var FO=['motor','zip','auto','fixed','drop','roller','panel','vert','roman','curt','timber','alu','plant','honey'];
+  var RL={bed:'bedrooms',living:'living rooms',office:'home offices',kitchen:'kitchens and bathrooms',alfresco:'alfresco areas',large:'large windows and glass walls'};
+  var GL={dark:'darkening the room',heat:'cutting heat and glare',privacy:'privacy',motor:'motorised control',style:'style and finish',outdoor:'outdoor shade'};
+  var NOTE={dark:'Ask us about blockout and lined options.',motor:'Ask about cordless, battery and mains powered motors.',heat:'Ask us which fabric suits the sun on your windows.'};
+  var resBox=$('results');
+  function checked(n){return document.querySelector('input[name="'+n+'"]:checked').value;}
+  function fit(){
+    var r=checked('room'), g=checked('goal');
+    var sc=FO.map(function(k){return {k:k,s:(T[k].r.indexOf(r)>=0?2:0)+(T[k].g.indexOf(g)>=0?3:0)};}).filter(function(x){return x.s>=3;});
+    if(sc.length<3){sc=FO.map(function(k){return {k:k,s:(T[k].r.indexOf(r)>=0?2:0)+(T[k].g.indexOf(g)>=0?3:0)};}).filter(function(x){return x.s>=2;});}
+    sc.sort(function(a,b){return b.s-a.s||FO.indexOf(a.k)-FO.indexOf(b.k);});
+    resBox.textContent='';
+    sc.slice(0,3).forEach(function(x){
+      var p=P[x.k], li=el('li','res'), fg=el('figure'), rb=el('div','rb');
+      if(p.img){var im=el('img'); im.src=p.img; im.alt=p.alt; im.width=600; im.height=400; im.loading='lazy'; fg.appendChild(im);}
+      var bits=[]; if(T[x.k].r.indexOf(r)>=0)bits.push(RL[r]); if(T[x.k].g.indexOf(g)>=0)bits.push(GL[g]);
+      rb.appendChild(el('h3','',p.n)); rb.appendChild(el('p','',p.d));
+      rb.appendChild(el('p','suits','Suits '+bits.join(' and ')+(NOTE[g]&&T[x.k].g.indexOf(g)>=0?'. '+NOTE[g]:'.')));
+      var row=el('div','cta-row'), a=el('a','btn btn-primary ask','Ask about this'); a.href='#quote'; a.setAttribute('data-product',p.ask); row.appendChild(a);
+      if(p.img){var z=el('button','btn btn-line','View larger'); z.type='button'; z.addEventListener('click',function(){openProd(x.k);}); row.appendChild(z);}
+      rb.appendChild(row); li.appendChild(fg); li.appendChild(rb); resBox.appendChild(li);
+    });
+  }
+  document.querySelectorAll('input[name="room"],input[name="goal"]').forEach(function(i){i.addEventListener('change',fit);});
+  fit();
+
+  /* try a blind */
+  var win=$('win'), vlow=$('vlow'), dlN=$('dl-n'), meter=document.querySelector('.meter i');
+  function tryIt(){
+    var st=checked('vstyle'), colEl=document.querySelector('input[name="vcol"]:checked'), lgEl=document.querySelector('input[name="vlight"]:checked');
+    var low=+vlow.value, op=+lgEl.value; if(st==='venetian')op=Math.min(op,.82);
+    win.setAttribute('data-style',st); win.setAttribute('data-lowered',low>0?'1':'0');
+    win.style.setProperty('--fab',colEl.value); win.style.setProperty('--low',low+'%'); win.style.setProperty('--op',st==='venetian'?.97:op);
+    var d=Math.round(100-low*op); dlN.textContent=d+'%'; meter.style.setProperty('--dl',d+'%');
+  }
+  document.querySelectorAll('input[name="vstyle"],input[name="vcol"],input[name="vlight"]').forEach(function(i){i.addEventListener('change',tryIt);});
+  vlow.addEventListener('input',tryIt); tryIt();
+  $('vask').addEventListener('click',function(){
+    var st=checked('vstyle'), cn=document.querySelector('input[name="vcol"]:checked').getAttribute('data-n'), ln=document.querySelector('input[name="vlight"]:checked').getAttribute('data-n');
+    var look={roller:'Roller blinds',roman:'Roman blinds',venetian:'Timber venetians'}[st];
+    pick(look==='Roller blinds'?'Roller screens / blinds':look);
+    $('f-msg').value='I would like to talk about '+st+' blinds in '+cn+', '+ln+'.';
+    $('quote').scrollIntoView({behavior:reduce?'auto':'smooth'});
+  });
+
+  /* gallery: zoom on click, with a brand watermark */
+  document.querySelectorAll('.mosaic figure').forEach(function(f){
+    var im=f.querySelector('img'), nm=f.querySelector('figcaption b').textContent;
+    var b=el('button','gz'); b.type='button'; b.setAttribute('aria-label','View larger photo: '+nm); f.appendChild(b);
+    f.appendChild(el('span','zoomhint','Zoom')); f.appendChild(el('span','wm','Selbys Blinds'));
+    b.addEventListener('click',function(){openLb(im.currentSrc||im.src,im.alt,nm,'');});
+  });
+
+  /* postcode check (demo radius, to be confirmed with Selbys) */
+  $('pcform').addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=$('pc-in').value.trim(), out=$('pc-out');
+    if(!/^\d{4}$/.test(v)){out.textContent='Enter a 4 digit postcode, like 3910.';return;}
+    var n=+v, ok=(n>=3000&&n<=3207)||(n>=3800&&n<=3810)||(n>=3910&&n<=3944)||(n>=3975&&n<=3980);
+    out.textContent=ok?'Postcode '+v+' is inside our usual service area. Book a measure and we will find a time.':'Postcode '+v+' is outside our usual area. Call 03 9775 5777 and we will check if we can help.';
+  });
+
+  /* colour themes */
+  var dockBtns=document.querySelectorAll('.dock button'), root=document.documentElement;
+  function setPal(k){
+    if(k==='harbour'){root.removeAttribute('data-palette');}else{root.setAttribute('data-palette',k);}
+    dockBtns.forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-p')===k);});
+    try{localStorage.setItem('selbys-pal2',k);}catch(_){}
+  }
+  dockBtns.forEach(function(b){b.addEventListener('click',function(){setPal(b.getAttribute('data-p'));});});
+  try{var sv=localStorage.getItem('selbys-pal2'); if(sv&&document.querySelector('.dock button[data-p="'+sv+'"]'))setPal(sv);}catch(_){}
+})();
+
+(function(){
+  var v=document.getElementById('zv'),b=document.getElementById('zvb');
+  if(!v||!b)return;
+  function lab(){b.textContent=v.paused?'Play video':'Pause video'}
+  b.addEventListener('click',function(){if(v.paused){v.play()}else{v.pause()}});
+  v.addEventListener('play',lab);v.addEventListener('pause',lab);
+  v.addEventListener('click',function(){b.click()});
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if('IntersectionObserver' in window&&!reduce){
+    new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){})}else{v.pause()}
+    })},{threshold:.35}).observe(v);
+  }
+  lab();
+})();
+</script>
+
+</body></html>
